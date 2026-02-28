@@ -104,7 +104,7 @@ describe("The O shape", () => {
     );
   });
 
-  test.skip("cannot be rotated left/counter-clockwise", () => {
+  test("cannot be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `.OO
        .OO
@@ -112,7 +112,7 @@ describe("The O shape", () => {
     );
   });
 
-  test.skip("has 1 distinct orientations", () => {
+  test("has 1 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(1);
   });
 });
