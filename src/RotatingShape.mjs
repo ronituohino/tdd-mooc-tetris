@@ -25,8 +25,7 @@ export class RotatingShape {
         str += this.characters[y * this.width + x];
       }
     }
-    this.characters = str;
-    return this;
+    return new RotatingShape(str, this.width, this.height);
   }
 
   rotateLeft() {
@@ -36,8 +35,7 @@ export class RotatingShape {
         str += this.characters[y * this.width + x];
       }
     }
-    this.characters = str;
-    return this;
+    return new RotatingShape(str, this.width, this.height);
   }
 
   toString() {

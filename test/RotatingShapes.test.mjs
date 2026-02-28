@@ -3,14 +3,11 @@ import { expect } from "chai";
 import { RotatingShape } from "../src/RotatingShape.mjs";
 
 describe("Rotating 3x3 shape", () => {
-  let shape;
-  beforeEach(() => {
-    shape = RotatingShape.fromString(
-      `ABC
-       DEF
-       GHI`
-    );
-  });
+  let shape = RotatingShape.fromString(
+    `ABC
+     DEF
+     GHI`
+  );
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -38,16 +35,13 @@ describe("Rotating 3x3 shape", () => {
 });
 
 describe("Rotating 5x5 shape", () => {
-  let shape;
-  beforeEach(() => {
-    shape = RotatingShape.fromString(
-      `ABCDE
-       FGHIJ
-       KLMNO
-       PQRST
-       UVWXY`
-    );
-  });
+  let shape = RotatingShape.fromString(
+    `ABCDE
+     FGHIJ
+     KLMNO
+     PQRST
+     UVWXY`
+  );
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
