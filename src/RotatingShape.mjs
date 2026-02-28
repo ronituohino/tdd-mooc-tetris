@@ -1,8 +1,12 @@
 export class RotatingShape {
-  shape;
+  charArr;
+  width;
+  height;
 
-  constructor(initial) {
-    this.shape = initial;
+  constructor(charArr, widht, height) {
+    this.charArr = charArr;
+    this.width = widht;
+    this.height = height;
   }
 
   static fromString(str) {
@@ -11,12 +15,12 @@ export class RotatingShape {
     }
 
     let charArrays = str.split("\n").map((s) => s.trim().split(""));
-    return new RotatingShape(charArrays);
+    return new RotatingShape(charArrays, charArrays[0].length, charArrays.length);
   }
 
   rotateRight() {}
 
   toString() {
-    return `${this.shape.map((charArrays) => charArrays.join("")).join("\n")}\n`;
+    return `${this.charArr.map((charArrays) => charArrays.join("")).join("\n")}\n`;
   }
 }
