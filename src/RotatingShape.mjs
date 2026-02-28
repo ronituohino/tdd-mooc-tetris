@@ -20,16 +20,16 @@ export class RotatingShape {
 
   rotateRight() {
     let str = "";
-    let index = 0;
     for (let x = 0; x < this.width; x++) {
       for (let y = this.height - 1; y >= 0; y--) {
         str += this.characters[y * this.width + x];
-        index += 1;
       }
     }
     this.characters = str;
     return this;
   }
+
+  rotateLeft() {}
 
   toString() {
     let str = "";
