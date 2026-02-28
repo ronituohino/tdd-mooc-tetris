@@ -2,6 +2,7 @@ export class Board {
   width;
   height;
 
+  hasFallingShape;
   shapePosX;
   shapePosY;
 
@@ -11,6 +12,7 @@ export class Board {
 
     this.shapePosX = -1;
     this.shapePosY = -1;
+    this.hasFallingShape = false;
   }
 
   toString() {
@@ -29,12 +31,17 @@ export class Board {
   }
 
   drop() {
-    if (this.shapePosX !== -1 && this.shapePosY !== -1) {
+    if (this.hasFallingShape) {
       throw new Error("already falling");
     }
 
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
+    this.hasFallingShape = true;
+  }
+
+  hasFalling() {
+    return this.hasFallingShape;
   }
 
   tick() {
