@@ -1,5 +1,5 @@
 export class RotatingShape {
-  charArr;
+  characters;
   width;
   height;
 
@@ -19,6 +19,11 @@ export class RotatingShape {
   }
 
   rotateRight() {
+    let newChars = [];
+    for (let c = 0; c < this.characters.length; c++) {
+      let character = this.characters[c];
+      console.log(character);
+    }
     return this;
   }
 
