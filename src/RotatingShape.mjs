@@ -34,11 +34,11 @@ export class RotatingShape {
     );
   }
 
-  rotateRight(rotationConstraint) {
-    if (rotationConstraint === "no-rotate") {
+  rotateRight() {
+    if (this.rotationConstraint === "no-rotate") {
       return this;
     }
-    if (rotationConstraint === "2-state") {
+    if (this.rotationConstraint === "2-state") {
       return new RotatingShape(
         this.rotationOtherState,
         this.width,
@@ -54,14 +54,14 @@ export class RotatingShape {
         str += this.characters[y * this.width + x];
       }
     }
-    return new RotatingShape(str, this.width, this.height, rotationConstraint);
+    return new RotatingShape(str, this.width, this.height);
   }
 
-  rotateLeft(rotationConstraint) {
-    if (rotationConstraint === "no-rotate") {
+  rotateLeft() {
+    if (this.rotationConstraint === "no-rotate") {
       return this;
     }
-    if (rotationConstraint === "2-state") {
+    if (this.rotationConstraint === "2-state") {
       return new RotatingShape(
         this.rotationOtherState,
         this.width,
@@ -77,7 +77,7 @@ export class RotatingShape {
         str += this.characters[y * this.width + x];
       }
     }
-    return new RotatingShape(str, this.width, this.height, rotationConstraint, "l");
+    return new RotatingShape(str, this.width, this.height);
   }
 
   toString() {
