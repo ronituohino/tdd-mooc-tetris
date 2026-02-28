@@ -14,13 +14,18 @@ export class RotatingShape {
       return undefined;
     }
 
-    let charArrays = str.split("\n").map((s) => s.trim().split(""));
-    return new RotatingShape(charArrays, charArrays[0].length, charArrays.length);
+    let charArrays = str.split("\n").map((s) => s.trim());
+    return new RotatingShape(charArrays.join(""), charArrays[0].length, charArrays.length);
   }
 
-  rotateRight() {}
-
   toString() {
-    return `${this.charArr.map((charArrays) => charArrays.join("")).join("\n")}\n`;
+    let str = "";
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        str += this.charArr[y * this.width + x];
+      }
+      str += "\n";
+    }
+    return str;
   }
 }
