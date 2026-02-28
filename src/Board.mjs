@@ -17,4 +17,8 @@ export class Board {
     }
     return boardStr;
   }
+
+  drop() {
+    return "";
+  }
 }
