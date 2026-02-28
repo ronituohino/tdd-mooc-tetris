@@ -2,14 +2,16 @@ export class RotatingShape {
   characters;
   width;
   height;
-  // undefined, "no-rotate", "mirror"
+  // undefined, "no-rotate", "mirror-l", "mirror-r"
   rotationConstraint;
+  lastRotation;
 
-  constructor(characters, width, height, rotationConstraint) {
+  constructor(characters, width, height, rotationConstraint, lastRotation) {
     this.characters = characters;
     this.width = width;
     this.height = height;
     this.rotationConstraint = rotationConstraint;
+    this.lastRotation = lastRotation;
   }
 
   static fromString(str, rotationConstraint) {
@@ -32,7 +34,7 @@ export class RotatingShape {
         str += this.characters[y * this.width + x];
       }
     }
-    return new RotatingShape(str, this.width, this.height, rotationConstraint);
+    return new RotatingShape(str, this.width, this.height, rotationConstraint, "r");
   }
 
   rotateLeft(rotationConstraint) {
@@ -46,7 +48,7 @@ export class RotatingShape {
         str += this.characters[y * this.width + x];
       }
     }
-    return new RotatingShape(str, this.width, this.height, rotationConstraint);
+    return new RotatingShape(str, this.width, this.height, rotationConstraint, "l");
   }
 
   toString() {
