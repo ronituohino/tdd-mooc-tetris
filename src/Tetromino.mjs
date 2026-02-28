@@ -6,4 +6,11 @@ export class Tetromino {
      TTT
      ...`
   );
+  static I_SHAPE = RotatingShape.fromString(
+    `.....
+     .....
+     IIII.
+     .....
+     .....`
+  );
 }
