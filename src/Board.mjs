@@ -9,15 +9,19 @@ export class Board {
     this.width = width;
     this.height = height;
 
-    this.shapePosX = 0;
-    this.shapePosY = 0;
+    this.shapePosX = -1;
+    this.shapePosY = -1;
   }
 
   toString() {
     let boardStr = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.height; x++) {
-        boardStr += ".";
+        if (y === this.shapePosY && x === this.shapePosX) {
+          boardStr += "X";
+        } else {
+          boardStr += ".";
+        }
       }
       boardStr += "\n";
     }
@@ -27,6 +31,5 @@ export class Board {
   drop() {
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
-    return "";
   }
 }
