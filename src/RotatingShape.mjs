@@ -2,40 +2,42 @@ export class RotatingShape {
   characters;
   width;
   height;
+  rotationConstraint;
 
-  constructor(characters, width, height) {
+  constructor(characters, width, height, rotationConstraint) {
     this.characters = characters;
     this.width = width;
     this.height = height;
+    this.rotationConstraint = rotationConstraint;
   }
 
-  static fromString(str) {
+  static fromString(str, rotationConstraint) {
     if (typeof str !== "string") {
       return undefined;
     }
 
     let characterArr = str.split("\n").map((s) => s.trim());
-    return new RotatingShape(characterArr.join(""), characterArr[0].length, characterArr.length);
+    return new RotatingShape(characterArr.join(""), characterArr[0].length, characterArr.length, rotationConstraint);
   }
 
-  rotateRight() {
+  rotateRight(rotationConstraint) {
     let str = "";
     for (let x = 0; x < this.width; x++) {
       for (let y = this.height - 1; y >= 0; y--) {
         str += this.characters[y * this.width + x];
       }
     }
-    return new RotatingShape(str, this.width, this.height);
+    return new RotatingShape(str, this.width, this.height, rotationConstraint);
   }
 
-  rotateLeft() {
+  rotateLeft(rotationConstraint) {
     let str = "";
     for (let x = this.width - 1; x >= 0; x--) {
       for (let y = 0; y < this.height; y++) {
         str += this.characters[y * this.width + x];
       }
     }
-    return new RotatingShape(str, this.width, this.height);
+    return new RotatingShape(str, this.width, this.height, rotationConstraint);
   }
 
   toString() {
