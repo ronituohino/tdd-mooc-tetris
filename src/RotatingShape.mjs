@@ -3,9 +3,9 @@ export class RotatingShape {
   width;
   height;
 
-  constructor(characters, widht, height) {
+  constructor(characters, width, height) {
     this.characters = characters;
-    this.width = widht;
+    this.width = width;
     this.height = height;
   }
 
