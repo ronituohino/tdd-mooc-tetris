@@ -11,7 +11,7 @@ export class RotatingShape {
     this.width = width;
     this.height = height;
     this.rotationConstraint = rotationConstraint;
-    this.rotationOtherState = rotationOtherState
+    this.rotationOtherState = rotationOtherState;
   }
 
   static fromString(str, rotationConstraint) {
@@ -28,7 +28,13 @@ export class RotatingShape {
       return this;
     }
     if (rotationConstraint === "2-state") {
-      return new RotatingShape(this.rotationOtherState, this.width, this.height, this.rotationConstraint, this.characters);
+      return new RotatingShape(
+        this.rotationOtherState,
+        this.width,
+        this.height,
+        this.rotationConstraint,
+        this.characters
+      );
     }
 
     let str = "";
