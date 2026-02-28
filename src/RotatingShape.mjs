@@ -6,7 +6,12 @@ export class RotatingShape {
   }
 
   static fromString(str) {
-    return new RotatingShape(str);
+    if (typeof str !== "string") {
+      return undefined;
+    }
+
+    let charArrays = str.split("\n").map((s) => s.trim().split());
+    return new RotatingShape(charArrays);
   }
 
   toString() {
