@@ -19,13 +19,19 @@ export class RotatingShape {
     return [charArr.join(""), charArr[0].length, charArr.length];
   }
 
-  static fromString(str, rotationConstraint) {
+  static fromString(str, rotationConstraint, rotationOtherState) {
     if (typeof str !== "string") {
       return undefined;
     }
 
     const [characters, widht, height] = RotatingShape.parseText(str);
-    return new RotatingShape(characters, widht, height, rotationConstraint);
+    return new RotatingShape(
+      characters,
+      widht,
+      height,
+      rotationConstraint,
+      rotationConstraint === "2-state" ? RotatingShape.parseText(rotationOtherState)[0] : undefined
+    );
   }
 
   rotateRight(rotationConstraint) {
