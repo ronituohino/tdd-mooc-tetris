@@ -2,10 +2,14 @@ export class Board {
   width;
   height;
 
+  // falling shape
   fallingShape;
   hasFallingShape;
   shapePosX;
   shapePosY;
+
+  // static shapes
+  occupiedSpots;
 
   constructor(width, height) {
     this.width = width;
@@ -15,6 +19,8 @@ export class Board {
     this.shapePosY = -1;
     this.fallingShape = "";
     this.hasFallingShape = false;
+
+    this.occupiedSpots = [];
   }
 
   toString() {
@@ -49,6 +55,7 @@ export class Board {
 
   tick() {
     if (this.shapePosY >= this.height - 1) {
+      // turn falling shape into static
       this.hasFallingShape = false;
     } else {
       this.shapePosY += 1;
