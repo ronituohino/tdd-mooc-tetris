@@ -18,6 +18,10 @@ export class RotatingShape {
     return new RotatingShape(characterArr.join(""), characterArr[0].length, characterArr.length);
   }
 
+  rotateRight() {
+    return this;
+  }
+
   toString() {
     let str = "";
     for (let y = 0; y < this.height; y++) {
