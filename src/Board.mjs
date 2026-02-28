@@ -29,6 +29,10 @@ export class Board {
   }
 
   drop() {
+    if (this.shapePosX !== -1 && this.shapePosY !== -1) {
+      throw new Error("already falling");
+    }
+
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
   }
