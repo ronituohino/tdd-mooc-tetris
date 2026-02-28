@@ -36,6 +36,9 @@ export class Board {
             break;
           }
         }
+        if (occupiedSpot) {
+          continue;
+        }
         if (y === this.shapePosY && x === this.shapePosX) {
           boardStr += this.fallingShape;
         } else {
