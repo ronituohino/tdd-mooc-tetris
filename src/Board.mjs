@@ -2,9 +2,15 @@ export class Board {
   width;
   height;
 
+  shapePosX;
+  shapePosY;
+
   constructor(width, height) {
     this.width = width;
     this.height = height;
+
+    this.shapePosX = 0;
+    this.shapePosY = 0;
   }
 
   toString() {
@@ -19,6 +25,8 @@ export class Board {
   }
 
   drop() {
+    this.shapePosX = Math.floor(this.width / 2);
+    this.shapePosY = 0;
     return "";
   }
 }
