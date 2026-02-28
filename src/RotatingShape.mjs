@@ -2,14 +2,16 @@ export class RotatingShape {
   characters;
   width;
   height;
-  // undefined, "no-rotate"
+  // undefined, "no-rotate", "2-state"
   rotationConstraint;
+  rotationOtherState;
 
-  constructor(characters, width, height, rotationConstraint) {
+  constructor(characters, width, height, rotationConstraint, rotationOtherState) {
     this.characters = characters;
     this.width = width;
     this.height = height;
     this.rotationConstraint = rotationConstraint;
+    this.rotationOtherState = rotationOtherState
   }
 
   static fromString(str, rotationConstraint) {
@@ -24,6 +26,9 @@ export class RotatingShape {
   rotateRight(rotationConstraint) {
     if (rotationConstraint === "no-rotate") {
       return this;
+    }
+    if (rotationConstraint === "2-state") {
+      return new RotatingShape(this.rotationOtherState, this.width, this.height, this.rotationConstraint, this.characters);
     }
 
     let str = "";
