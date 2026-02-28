@@ -56,7 +56,12 @@ export class Board {
   tick() {
     if (this.shapePosY >= this.height - 1) {
       // turn falling shape into static
+      this.occupiedSpots.push({ x: this.shapePosX, y: this.shapePosY, style: this.fallingShape });
+
       this.hasFallingShape = false;
+      this.fallingShape = "";
+      this.shapePosX = -1;
+      this.shapePosY = -1;
     } else {
       this.shapePosY += 1;
     }
