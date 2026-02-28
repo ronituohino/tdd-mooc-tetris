@@ -27,6 +27,15 @@ export class Board {
     let boardStr = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.height; x++) {
+        let occupiedSpot = false;
+        for (let s = 0; s < this.occupiedSpots.length; s++) {
+          let spot = this.occupiedSpots[s];
+          if (y === spot.y && x === spot.x) {
+            boardStr += spot.style;
+            occupiedSpot = true;
+            break;
+          }
+        }
         if (y === this.shapePosY && x === this.shapePosX) {
           boardStr += this.fallingShape;
         } else {
@@ -60,8 +69,8 @@ export class Board {
 
       this.hasFallingShape = false;
       this.fallingShape = "";
-      this.shapePosX = -1;
-      this.shapePosY = -1;
+      //this.shapePosX = -1;
+      //this.shapePosY = -1;
     } else {
       this.shapePosY += 1;
     }
