@@ -32,4 +32,8 @@ export class Board {
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
   }
+
+  tick() {
+    this.shapePosY += 1;
+  }
 }
