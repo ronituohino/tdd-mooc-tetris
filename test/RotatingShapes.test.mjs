@@ -1,13 +1,16 @@
-import { describe, test } from "vitest";
+import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { RotatingShape } from "../src/RotatingShape.mjs";
 
 describe("Rotating 3x3 shape", () => {
-  const shape = RotatingShape.fromString(
-    `ABC
-     DEF
-     GHI`
-  );
+  let shape;
+  beforeEach(() => {
+    shape = RotatingShape.fromString(
+      `ABC
+       DEF
+       GHI`
+    );
+  });
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(

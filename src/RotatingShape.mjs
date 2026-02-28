@@ -29,7 +29,16 @@ export class RotatingShape {
     return this;
   }
 
-  rotateLeft() {}
+  rotateLeft() {
+    let str = "";
+    for (let x = this.width - 1; x >= 0; x--) {
+      for (let y = 0; y < this.height; y++) {
+        str += this.characters[y * this.width + x];
+      }
+    }
+    this.characters = str;
+    return this;
+  }
 
   toString() {
     let str = "";
