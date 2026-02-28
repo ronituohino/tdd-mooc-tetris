@@ -2,6 +2,7 @@ export class RotatingShape {
   characters;
   width;
   height;
+  // undefined, "no-rotate", "mirror"
   rotationConstraint;
 
   constructor(characters, width, height, rotationConstraint) {
@@ -21,6 +22,10 @@ export class RotatingShape {
   }
 
   rotateRight(rotationConstraint) {
+    if (rotationConstraint === "no-rotate") {
+      return this;
+    }
+
     let str = "";
     for (let x = 0; x < this.width; x++) {
       for (let y = this.height - 1; y >= 0; y--) {
@@ -31,6 +36,10 @@ export class RotatingShape {
   }
 
   rotateLeft(rotationConstraint) {
+    if (rotationConstraint === "no-rotate") {
+      return this;
+    }
+
     let str = "";
     for (let x = this.width - 1; x >= 0; x--) {
       for (let y = 0; y < this.height; y++) {
