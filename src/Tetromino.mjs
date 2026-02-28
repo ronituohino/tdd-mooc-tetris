@@ -22,6 +22,7 @@ export class Tetromino {
   static O_SHAPE = RotatingShape.fromString(
     `.OO
      .OO
-     ...`
+     ...`,
+    "no-rotate"
   );
 }
