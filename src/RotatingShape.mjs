@@ -14,6 +14,8 @@ export class RotatingShape {
     return new RotatingShape(charArrays);
   }
 
+  rotateRight() {}
+
   toString() {
     return `${this.shape.map((charArrays) => charArrays.join("")).join("\n")}\n`;
   }
