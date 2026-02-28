@@ -14,13 +14,18 @@ export class RotatingShape {
     this.rotationOtherState = rotationOtherState;
   }
 
+  static parseText(str) {
+    const charArr = str.split("\n").map((s) => s.trim());
+    return [charArr.join(""), charArr[0].length, charArr.length];
+  }
+
   static fromString(str, rotationConstraint) {
     if (typeof str !== "string") {
       return undefined;
     }
 
-    let characterArr = str.split("\n").map((s) => s.trim());
-    return new RotatingShape(characterArr.join(""), characterArr[0].length, characterArr.length, rotationConstraint);
+    const [characters, widht, height] = RotatingShape.parseText(str);
+    return new RotatingShape(characters, widht, height, rotationConstraint);
   }
 
   rotateRight(rotationConstraint) {
