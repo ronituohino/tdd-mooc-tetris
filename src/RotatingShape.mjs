@@ -10,11 +10,11 @@ export class RotatingShape {
       return undefined;
     }
 
-    let charArrays = str.split("\n").map((s) => s.trim().split());
+    let charArrays = str.split("\n").map((s) => s.trim().split(""));
     return new RotatingShape(charArrays);
   }
 
   toString() {
-    return this.shape;
+    return `${this.shape.map((charArrays) => charArrays.join("")).join("\n")}\n`;
   }
 }
