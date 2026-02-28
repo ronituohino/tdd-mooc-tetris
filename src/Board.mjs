@@ -45,6 +45,10 @@ export class Board {
   }
 
   tick() {
-    this.shapePosY += 1;
+    if (this.shapePosY >= this.height - 1) {
+      this.hasFallingShape = false;
+    } else {
+      this.shapePosY += 1;
+    }
   }
 }
