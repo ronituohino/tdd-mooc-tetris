@@ -66,7 +66,9 @@ export class Board {
   }
 
   tick() {
-    if (this.shapePosY >= this.height - 1) {
+    let newPos = this.shapePosY + 1;
+
+    if (newPos >= this.height || this.occupiedSpots.some((os) => os.y === newPos && os.x === this.shapePosX)) {
       // turn falling shape into static
       this.occupiedSpots.push({ x: this.shapePosX, y: this.shapePosY, style: this.fallingShape });
 
@@ -75,7 +77,7 @@ export class Board {
       //this.shapePosX = -1;
       //this.shapePosY = -1;
     } else {
-      this.shapePosY += 1;
+      this.shapePosY = newPos;
     }
   }
 }
