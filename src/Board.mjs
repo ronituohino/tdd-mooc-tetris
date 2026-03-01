@@ -25,22 +25,20 @@ export class Board {
 
   toString() {
     let boardStr = ".".repeat(this.width * this.height);
-    for (let y = 0; y < this.height; y++) {
-      for (let x = 0; x < this.height; x++) {
         for (let s = 0; s < this.occupiedSpots.length; s++) {
           let spot = this.occupiedSpots[s];
         }
         if (occupiedSpot) {
-          continue;
+          
         }
         if (y === this.shapePosY && x === this.shapePosX) {
           boardStr += this.fallingShape.toString();
         } else {
           boardStr += ".";
         }
-      }
+      
       boardStr += "\n";
-    }
+    
     return boardStr;
   }
 
