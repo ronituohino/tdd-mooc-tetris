@@ -28,7 +28,9 @@ export class Board {
     for (let i = 0; i < this.width * this.height; i++) {
       arr.push(".");
     }
-    console.log(arr);
+    this.fallingShape.extractElements().forEach((spot) => {
+      arr[(spot.y + this.shapePosY) * this.width + (spot.x + this.shapePosX)] = spot.element;
+    });
     for (let s = 0; s < this.occupiedSpots.length; s++) {
       let spot = this.occupiedSpots[s];
       arr[spot.y * this.width + spot.x] = spot.element;
