@@ -1,3 +1,5 @@
+import { RotatingShape } from "./RotatingShape.mjs";
+
 export class Board {
   width;
   height;
@@ -29,7 +31,7 @@ export class Board {
         for (let s = 0; s < this.occupiedSpots.length; s++) {
           let spot = this.occupiedSpots[s];
           if (y === spot.y && x === spot.x) {
-            boardStr += spot.style;
+            boardStr += spot.shape;
             occupiedSpot = true;
             break;
           }
@@ -52,6 +54,12 @@ export class Board {
     if (this.fallingShape !== undefined) {
       throw new Error("already falling");
     }
+    let tetromino;
+    if (typeof shape === "string") {
+      tetromino = RotatingShape.fromString(shape);
+    } else {
+      tetromino = shape;
+    }
 
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
@@ -67,11 +75,8 @@ export class Board {
 
     if (newPos >= this.height || this.occupiedSpots.some((os) => os.y === newPos && os.x === this.shapePosX)) {
       // turn falling shape into static
-      this.occupiedSpots.push({ x: this.shapePosX, y: this.shapePosY, style: this.fallingShape });
-
+      this.occupiedSpots.push({ x: this.shapePosX, y: this.shapePosY, shape: this.fallingShape });
       this.fallingShape = undefined;
-      //this.shapePosX = -1;
-      //this.shapePosY = -1;
     } else {
       this.shapePosY = newPos;
     }
