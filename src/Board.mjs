@@ -75,6 +75,11 @@ export class Board {
     const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
     const newPos = this.shapePosY + 1;
     let newPosIllegal = false;
+    for (let cc = 0; cc < coordsAndChars.length; cc++) {
+      const someChar = coordsAndChars[cc];
+      // if some of the spots on the falling shape are past the board boundaries or
+      // collide with some occupied space
+    }
 
     let minX = this.fallingShape.width;
     this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
