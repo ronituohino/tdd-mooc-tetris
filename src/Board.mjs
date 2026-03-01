@@ -33,6 +33,9 @@ export class Board {
       let spot = this.occupiedSpots[s];
       arr[spot.y * this.width + spot.x] = spot.element;
     }
+    for (let y = 0; y < this.height; y++) {
+      arr.splice((y + 1) * this.width + y, 0, "\n");
+    }
     return arr.join("");
   }
 
