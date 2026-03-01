@@ -32,8 +32,8 @@ export class Board {
     }
 
     // falling shape
-    this.fallingShape?.extractCoordinatesAndCharacters().forEach((element) => {
-      arr[(element.y + this.shapePosY) * this.width + (element.x + this.shapePosX)] = element.char;
+    this.fallingShape?.extractCoordinatesAndCharacters().forEach((someChar) => {
+      arr[(someChar.y + this.shapePosY) * this.width + (someChar.x + this.shapePosX)] = someChar.char;
     });
 
     // static shapes
