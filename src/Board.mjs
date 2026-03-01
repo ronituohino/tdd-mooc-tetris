@@ -94,14 +94,6 @@ export class Board {
 
   // input
   moveLeft() {
-    const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
-    let newPosIllegal = false;
-    for (let cc = 0; cc < coordsAndChars.length; cc++) {
-      const someChar = coordsAndChars[cc];
-      // if some of the spots on the falling shape are past the board boundaries or
-      // collide with some occupied space
-    }
-
     if (!this.isIllegalMove(-1, 0)) {
       this.shapePosX -= 1;
     }
