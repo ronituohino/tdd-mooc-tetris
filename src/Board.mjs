@@ -128,18 +128,12 @@ export class Board {
 
     const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
     const newPos = this.shapePosY + 1;
-    let newPosIllegal = false;
+    let newPosIllegal = this.isIllegalMove(0, 1);
+
     for (let cc = 0; cc < coordsAndChars.length; cc++) {
       const someChar = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board lower boundary or
       // collide with some occupied space
-      if (
-        someChar.y + newPos >= this.height ||
-        this.occupiedSpots.some((os) => someChar.y + newPos === os.y && someChar.x + this.shapePosX === os.x)
-      ) {
-        newPosIllegal = true;
-        break;
-      }
     }
 
     if (newPosIllegal) {
