@@ -108,17 +108,8 @@ export class Board {
       // collide with some occupied space
       const newX = someChar.x + this.shapePosX;
       const newY = someChar.y + this.shapePosY;
-      if (
-        newX < 0 ||
-        newX >= this.width ||
-        newY >= this.height ||
-        this.occupiedSpots.some((os) => newX === os.x && newY === os.y)
-      ) {
-        isIllegal = true;
-        break;
-      }
     }
-    return isIllegal;
+    return this.isIllegalMove(testShape, 0, 0);
   }
 
   // input
