@@ -1,8 +1,26 @@
-import { describe, test } from "vitest";
+import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
+import { Board } from "../src/Board.mjs";
+import { Tetromino } from "../src/Tetromino.mjs";
 
 describe("A falling tetromino can be moved", () => {
-  test("left", () => {});
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("left", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.moveLeft();
+    expect(board.toString()).to.equalShape(
+      `...T......
+       ..TTT.....
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
   test.skip("right", () => {});
   test.skip("down", () => {});
 });
