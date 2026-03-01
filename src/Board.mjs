@@ -93,6 +93,7 @@ export class Board {
   }
 
   isIllegalRotation(direction) {
+    let testShape;
     if (direction === "right") {
       const testShape = this.fallingShape.rotateRight();
       const coordsAndChars = testShape.extractCoordinatesAndCharacters();
@@ -103,14 +104,6 @@ export class Board {
         // collide with some occupied space
         const newX = someChar.x + this.shapePosX;
         const newY = someChar.y + this.shapePosY;
-        if (
-          newX < 0 ||
-          newX >= this.width ||
-          newY >= this.height ||
-          this.occupiedSpots.some((os) => newX === os.x && newY === os.y)
-        ) {
-          isIllegal = true;
-        }
       }
       return isIllegal;
     } else if (direction === "left") {
