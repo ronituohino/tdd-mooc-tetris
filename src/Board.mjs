@@ -53,7 +53,7 @@ export class Board {
       tetromino = shape;
     }
 
-    this.shapePosX = Math.floor(this.width / 2);
+    this.shapePosX = Math.floor(this.width / 2 - tetromino.width / 2);
     this.shapePosY = 0;
     this.fallingShape = tetromino;
   }
