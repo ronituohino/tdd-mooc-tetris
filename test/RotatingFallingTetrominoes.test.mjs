@@ -3,6 +3,12 @@ import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
+function fallToBottom(board) {
+  for (let i = 0; i < 10; i++) {
+    board.tick();
+  }
+}
+
 describe("A falling Tetromino can be rotated", () => {
   let board;
   beforeEach(() => {
@@ -83,11 +89,7 @@ describe("A falling Tetromino can be rotated", () => {
   });
   test("left while touching another block", () => {
     board.drop(Tetromino.O_SHAPE);
-    board.tick();
-    board.tick();
-    board.tick();
-    board.tick();
-    board.tick();
+    fallToBottom(board);
     board.drop(Tetromino.T_SHAPE);
     board.moveRight();
     board.moveRight();
@@ -105,11 +107,7 @@ describe("A falling Tetromino can be rotated", () => {
   });
   test("right while touching another block", () => {
     board.drop(Tetromino.O_SHAPE);
-    board.tick();
-    board.tick();
-    board.tick();
-    board.tick();
-    board.tick();
+    fallToBottom(board);
     board.drop(Tetromino.T_SHAPE);
     board.moveLeft();
     board.tick();
@@ -127,7 +125,27 @@ describe("A falling Tetromino can be rotated", () => {
 });
 
 describe("A falling Tetromino cannot be rotated", () => {
-  test.skip("left when other blocks are in the way", () => {});
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("left when other blocks are in the way", () => {
+    board.drop(Tetromino.O_SHAPE);
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+    board.tick();
+    board.tick();
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ....T.....
+       ...TTT....
+       ....OO....
+       ....OO....`
+    );
+  });
   test.skip("right when other blocks are in the way", () => {});
   test.skip("when block would reach higher than before (no floor kick)", () => {});
 });

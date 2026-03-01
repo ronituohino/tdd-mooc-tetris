@@ -92,6 +92,12 @@ export class Board {
     return isIllegal;
   }
 
+  isIllegalRotation(direction) {
+    if (direction === "right") {
+    } else if (direction === "left") {
+    }
+  }
+
   // input
   moveLeft() {
     if (!this.isIllegalMove(-1, 0)) {
