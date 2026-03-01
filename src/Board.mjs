@@ -111,6 +111,9 @@ export class Board {
   rotateLeft() {
     this.fallingShape = this.fallingShape.rotateLeft();
   }
+  rotateRight() {
+    this.fallingShape = this.fallingShape.rotateRight();
+  }
 
   tick() {
     if (!this.fallingShape) {

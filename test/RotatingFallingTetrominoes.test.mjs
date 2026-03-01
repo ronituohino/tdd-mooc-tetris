@@ -22,7 +22,19 @@ describe("A falling Tetromino can be rotated", () => {
        ..........`
     );
   });
-  test.skip("right in the air", () => {});
+  test("right in the air", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.tick();
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ....T.....
+       ....TT....
+       ....T.....
+       ..........
+       ..........`
+    );
+  });
   test.skip("left while touching a wall", () => {});
   test.skip("right while touching a wall", () => {});
   test.skip("left while touching the ground", () => {});
