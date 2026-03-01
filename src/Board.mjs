@@ -70,6 +70,11 @@ export class Board {
     return this.fallingShape !== undefined;
   }
 
+  // input
+  moveLeft() {
+    this.shapePosX -= 1;
+  }
+
   tick() {
     if (!this.fallingShape) {
       return;
