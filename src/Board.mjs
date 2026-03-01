@@ -63,7 +63,16 @@ export class Board {
   }
 
   tick() {
-    let newPos = this.shapePosY + 1;
+    const elements = this.fallingShape.extractElements();
+    const newPos = this.shapePosY + 1;
+    let newPosIllegal = false;
+    for (let e = 0; e < elements.length; e++) {
+      const spot = elements[e];
+      if (this.occupiedSpots.some((os) => {})) {
+        newPosIllegal = true;
+        break;
+      }
+    }
 
     if (newPos >= this.height || this.occupiedSpots.some((os) => os.y === newPos && os.x === this.shapePosX)) {
       // turn falling shape into static
