@@ -100,9 +100,9 @@ export class RotatingShape {
     let elements = [];
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        let element = this.characters[y * this.width + x];
-        if (element !== ".") {
-          elements.push({ x, y, element });
+        const char = this.characters[y * this.width + x];
+        if (char !== ".") {
+          elements.push({ x, y, char });
         }
       }
     }

@@ -32,14 +32,14 @@ export class Board {
     }
 
     // falling shape
-    this.fallingShape?.extractElements().forEach((spot) => {
-      arr[(spot.y + this.shapePosY) * this.width + (spot.x + this.shapePosX)] = spot.element;
+    this.fallingShape?.extractElements().forEach((element) => {
+      arr[(element.y + this.shapePosY) * this.width + (element.x + this.shapePosX)] = element.char;
     });
 
     // static shapes
     for (let s = 0; s < this.occupiedSpots.length; s++) {
-      const spot = this.occupiedSpots[s];
-      arr[spot.y * this.width + spot.x] = spot.element;
+      const os = this.occupiedSpots[s];
+      arr[os.y * this.width + os.x] = os.char;
     }
 
     // add \n chars between lines
@@ -97,7 +97,7 @@ export class Board {
         this.occupiedSpots.push({
           x: element.x + this.shapePosX,
           y: element.y + this.shapePosY,
-          element: element.element,
+          char: element.char,
         })
       );
       this.fallingShape = undefined;
