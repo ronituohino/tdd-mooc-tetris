@@ -73,12 +73,19 @@ export class Board {
   // input
   moveLeft() {
     const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
-    const newPos = this.shapePosY + 1;
+    const newPos = this.shapePosX - 1;
     let newPosIllegal = false;
     for (let cc = 0; cc < coordsAndChars.length; cc++) {
       const someChar = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board boundaries or
       // collide with some occupied space
+      if (
+        someChar.x + newPos < 0 ||
+        this.occupiedSpots.some((os) => someChar.y + newPos === os.y && someChar.x + this.shapePosX === os.x)
+      ) {
+        newPosIllegal = true;
+        break;
+      }
     }
 
     let minX = this.fallingShape.width;
