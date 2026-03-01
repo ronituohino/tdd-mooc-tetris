@@ -77,6 +77,9 @@ export class Board {
   moveRight() {
     this.shapePosX += 1;
   }
+  moveDown() {
+    this.shapePosY += 1;
+  }
 
   tick() {
     if (!this.fallingShape) {
