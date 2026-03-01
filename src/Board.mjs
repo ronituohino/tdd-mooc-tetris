@@ -24,23 +24,17 @@ export class Board {
   }
 
   toString() {
-    let boardStr = "";
+    let boardStr = ".".repeat(this.width * this.height);
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.height; x++) {
-        let occupiedSpot = false;
         for (let s = 0; s < this.occupiedSpots.length; s++) {
           let spot = this.occupiedSpots[s];
-          if (y === spot.y && x === spot.x) {
-            boardStr += spot.shape;
-            occupiedSpot = true;
-            break;
-          }
         }
         if (occupiedSpot) {
           continue;
         }
         if (y === this.shapePosY && x === this.shapePosX) {
-          boardStr += this.fallingShape;
+          boardStr += this.fallingShape.toString();
         } else {
           boardStr += ".";
         }
@@ -54,6 +48,7 @@ export class Board {
     if (this.fallingShape !== undefined) {
       throw new Error("already falling");
     }
+
     let tetromino;
     if (typeof shape === "string") {
       tetromino = RotatingShape.fromString(shape);
@@ -63,7 +58,7 @@ export class Board {
 
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
-    this.fallingShape = shape;
+    this.fallingShape = tetromino;
   }
 
   hasFalling() {
