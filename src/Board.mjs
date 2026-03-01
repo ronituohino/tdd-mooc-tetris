@@ -23,17 +23,22 @@ export class Board {
     this.occupiedSpots = [];
   }
 
+  // rendering logic
   toString() {
-    let arr = [];
+    // background
+    const arr = [];
     for (let i = 0; i < this.width * this.height; i++) {
       arr.push(".");
     }
 
+    // falling shape
     this.fallingShape?.extractElements().forEach((spot) => {
       arr[(spot.y + this.shapePosY) * this.width + (spot.x + this.shapePosX)] = spot.element;
     });
+
+    // static shapes
     for (let s = 0; s < this.occupiedSpots.length; s++) {
-      let spot = this.occupiedSpots[s];
+      const spot = this.occupiedSpots[s];
       arr[spot.y * this.width + spot.x] = spot.element;
     }
 
