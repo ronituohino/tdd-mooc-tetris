@@ -101,7 +101,13 @@ export class Board {
 
     const coordsAndChars = testShape.extractCoordinatesAndCharacters();
     let isIllegal = false;
-    for (let cc = 0; cc < coordsAndChars.length; cc++) {}
+    for (let cc = 0; cc < coordsAndChars.length; cc++) {
+      const someChar = coordsAndChars[cc];
+      // if some of the spots on the falling shape are past the board boundaries or
+      // collide with some occupied space
+      const newX = someChar.x + this.shapePosX + movementX;
+      const newY = someChar.y + this.shapePosY + movementY;
+    }
     return isIllegal;
   }
 
