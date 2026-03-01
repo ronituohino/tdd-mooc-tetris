@@ -99,16 +99,6 @@ export class Board {
     } else if (direction === "left") {
       testShape = this.fallingShape.rotateLeft();
     }
-
-    const coordsAndChars = testShape.extractCoordinatesAndCharacters();
-    let isIllegal = false;
-    for (let cc = 0; cc < coordsAndChars.length; cc++) {
-      const someChar = coordsAndChars[cc];
-      // if some of the spots on the falling shape are past the board boundaries or
-      // collide with some occupied space
-      const newX = someChar.x + this.shapePosX;
-      const newY = someChar.y + this.shapePosY;
-    }
     return this.isIllegalMove(testShape, 0, 0);
   }
 
