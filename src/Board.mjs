@@ -138,10 +138,14 @@ export class Board {
     }
   }
   rotateLeft() {
-    this.fallingShape = this.fallingShape.rotateLeft();
+    if (!this.isIllegalRotation("left")) {
+      this.fallingShape = this.fallingShape.rotateLeft();
+    }
   }
   rotateRight() {
-    this.fallingShape = this.fallingShape.rotateRight();
+    if (!this.isIllegalRotation("right")) {
+      this.fallingShape = this.fallingShape.rotateRight();
+    }
   }
 
   tick() {
