@@ -63,18 +63,25 @@ export class Board {
   }
 
   tick() {
+    if (!this.fallingShape) {
+      return;
+    }
+
     const elements = this.fallingShape.extractElements();
     const newPos = this.shapePosY + 1;
     let newPosIllegal = false;
     for (let e = 0; e < elements.length; e++) {
       const spot = elements[e];
-      if (this.occupiedSpots.some((os) => {})) {
+      if (
+        spot.y + newPos >= this.height ||
+        this.occupiedSpots.some((os) => spot.y + newPos === os.y && spot.x + this.shapePosX === os.x)
+      ) {
         newPosIllegal = true;
         break;
       }
     }
 
-    if (newPos >= this.height || this.occupiedSpots.some((os) => os.y === newPos && os.x === this.shapePosX)) {
+    if (newPosIllegal) {
       // turn falling shape into static
       this.fallingShape
         .extractElements()
