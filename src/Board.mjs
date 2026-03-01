@@ -70,8 +70,8 @@ export class Board {
     return this.fallingShape !== undefined;
   }
 
-  isIllegalMove(movementX, movementY) {
-    const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
+  isIllegalMove(shape, movementX, movementY) {
+    const coordsAndChars = shape.extractCoordinatesAndCharacters();
     let isIllegal = false;
     for (let cc = 0; cc < coordsAndChars.length; cc++) {
       const someChar = coordsAndChars[cc];
@@ -123,17 +123,17 @@ export class Board {
 
   // input
   moveLeft() {
-    if (!this.isIllegalMove(-1, 0)) {
+    if (!this.isIllegalMove(this.fallingShape, -1, 0)) {
       this.shapePosX -= 1;
     }
   }
   moveRight() {
-    if (!this.isIllegalMove(1, 0)) {
+    if (!this.isIllegalMove(this.fallingShape, 1, 0)) {
       this.shapePosX += 1;
     }
   }
   moveDown() {
-    if (!this.isIllegalMove(0, 1)) {
+    if (!this.isIllegalMove(this.fallingShape, 0, 1)) {
       this.shapePosY += 1;
     }
   }
@@ -153,7 +153,7 @@ export class Board {
       return;
     }
 
-    if (this.isIllegalMove(0, 1)) {
+    if (this.isIllegalMove(this.fallingShape, 0, 1)) {
       // turn falling shape into static
       this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) =>
         this.occupiedSpots.push({
