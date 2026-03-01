@@ -70,6 +70,10 @@ export class Board {
     return this.fallingShape !== undefined;
   }
 
+  isIllegalMove(movementX, movementY) {
+    let isIllegal = false;
+  }
+
   // input
   moveLeft() {
     const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
