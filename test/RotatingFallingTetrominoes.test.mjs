@@ -136,6 +136,22 @@ describe("A falling Tetromino cannot be rotated", () => {
     board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.tick();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ....T.....
+       ...TTT....
+       ....OO....
+       ....OO....`
+    );
+  });
+  test("right when other blocks are in the way", () => {
+    board.drop(Tetromino.O_SHAPE);
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+    board.tick();
+    board.tick();
     board.rotateRight();
     expect(board.toString()).to.equalShape(
       `..........
@@ -146,7 +162,6 @@ describe("A falling Tetromino cannot be rotated", () => {
        ....OO....`
     );
   });
-  test.skip("right when other blocks are in the way", () => {});
   test.skip("when block would reach higher than before (no floor kick)", () => {});
 });
 
