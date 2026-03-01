@@ -136,6 +136,32 @@ describe("A falling tetromino cannot be moved through", () => {
        ....OO....`
     );
   });
-  test.skip("other blocks on the right", () => {});
+  test("other blocks on the right", () => {
+    board.drop(Tetromino.O_SHAPE);
+    fallToBottom(board);
+    board.drop(Tetromino.O_SHAPE);
+    board.moveLeft();
+    board.moveLeft();
+    board.tick();
+    board.tick();
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..OO......
+       ..OOOO....
+       ....OO....`
+    );
+    board.moveRight();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..OO......
+       ..OOOO....
+       ....OO....`
+    );
+  });
   test.skip("other blocks below (will stop falling)", () => {});
 });

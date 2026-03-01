@@ -99,13 +99,7 @@ export class Board {
     }
   }
   moveRight() {
-    let maxX = 0;
-    this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
-      if (someChar.x > maxX) {
-        maxX = someChar.x;
-      }
-    });
-    if (this.shapePosX < this.width - maxX - 1) {
+    if (!this.isIllegalMove(1, 0)) {
       this.shapePosX += 1;
     }
   }
