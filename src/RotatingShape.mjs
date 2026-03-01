@@ -96,16 +96,16 @@ export class RotatingShape {
    *
    *  E.g. [{x: 1, y: 0, element: "T"}, {x:0, y:1, element: "T"}, ...]
    */
-  extractElements() {
-    let elements = [];
+  extractCoordinatesAndCharacters() {
+    let coordsAndChars = [];
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         const char = this.characters[y * this.width + x];
         if (char !== ".") {
-          elements.push({ x, y, char });
+          coordsAndChars.push({ x, y, char });
         }
       }
     }
-    return elements;
+    return coordsAndChars;
   }
 }

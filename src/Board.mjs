@@ -32,7 +32,7 @@ export class Board {
     }
 
     // falling shape
-    this.fallingShape?.extractElements().forEach((element) => {
+    this.fallingShape?.extractCoordinatesAndCharacters().forEach((element) => {
       arr[(element.y + this.shapePosY) * this.width + (element.x + this.shapePosX)] = element.char;
     });
 
@@ -75,11 +75,11 @@ export class Board {
       return;
     }
 
-    const elements = this.fallingShape.extractElements();
+    const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
     const newPos = this.shapePosY + 1;
     let newPosIllegal = false;
-    for (let e = 0; e < elements.length; e++) {
-      const element = elements[e];
+    for (let cc = 0; cc < coordsAndChars.length; cc++) {
+      const element = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board lower boundary or
       // collide with some occupied space
       if (
@@ -93,7 +93,7 @@ export class Board {
 
     if (newPosIllegal) {
       // turn falling shape into static
-      elements.forEach((element) =>
+      coordsAndChars.forEach((element) =>
         this.occupiedSpots.push({
           x: element.x + this.shapePosX,
           y: element.y + this.shapePosY,
