@@ -35,17 +35,101 @@ describe("A falling Tetromino can be rotated", () => {
        ..........`
     );
   });
-  test.skip("left while touching a wall", () => {});
-  test.skip("right while touching a wall", () => {});
-  test.skip("left while touching the ground", () => {});
-  test.skip("right while touching the ground", () => {});
-  test.skip("left while touching another block", () => {});
-  test.skip("right while touching another block", () => {});
+  test("left while touching a wall", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.moveLeft();
+    board.moveLeft();
+    board.moveLeft();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `.T........
+       TT........
+       .T........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+  test("right while touching a wall", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.moveLeft();
+    board.moveLeft();
+    board.moveLeft();
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `.T........
+       .TT.......
+       .T........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+  test("while touching the ground", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ....T.....
+       ...TTT....
+       ..........`
+    );
+  });
+  test("left while touching another block", () => {
+    board.drop(Tetromino.O_SHAPE);
+    board.tick();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.drop(Tetromino.T_SHAPE);
+    board.moveRight();
+    board.moveRight();
+    board.tick();
+    board.tick();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ......T...
+       .....TT...
+       ....OOT...
+       ....OO....`
+    );
+  });
+  test("right while touching another block", () => {
+    board.drop(Tetromino.O_SHAPE);
+    board.tick();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.drop(Tetromino.T_SHAPE);
+    board.moveLeft();
+    board.tick();
+    board.tick();
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...T......
+       ...TT.....
+       ...TOO....
+       ....OO....`
+    );
+  });
 });
 
 describe("A falling Tetromino cannot be rotated", () => {
   test.skip("left when other blocks are in the way", () => {});
   test.skip("right when other blocks are in the way", () => {});
+  test.skip("when block would reach higher than before (no floor kick)", () => {});
 });
 
 describe("Wall kick works on", () => {
