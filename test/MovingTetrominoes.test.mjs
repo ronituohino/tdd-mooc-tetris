@@ -81,7 +81,20 @@ describe("A falling tetromino cannot be moved beyond", () => {
        ..........`
     );
   });
-  test.skip("bottom of the board (will stop falling)", () => {});
+  test("bottom of the board (will stop falling)", () => {
+    board.drop(Tetromino.O_SHAPE);
+    for (let i = 0; i < 10; i++) {
+      board.moveDown();
+    }
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ....OO....
+       ....OO....`
+    );
+  });
 });
 
 describe("A falling tetromino cannot be moved through", () => {

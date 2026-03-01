@@ -94,7 +94,15 @@ export class Board {
     }
   }
   moveDown() {
-    this.shapePosY += 1;
+    let maxY = 0;
+    this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
+      if (someChar.y > maxY) {
+        maxY = someChar.x;
+      }
+    });
+    if (this.shapePosY < this.height - maxY - 1) {
+      this.shapePosY += 1;
+    }
   }
 
   tick() {
