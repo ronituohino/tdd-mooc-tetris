@@ -94,6 +94,15 @@ export class Board {
 
   isIllegalRotation(direction) {
     if (direction === "right") {
+      const testShape = this.fallingShape.rotateRight();
+      const coordsAndChars = testShape.extractCoordinatesAndCharacters();
+      let isIllegal = false;
+      for (let cc = 0; cc < coordsAndChars.length; cc++) {
+        const someChar = coordsAndChars[cc];
+        // if some of the spots on the falling shape are past the board boundaries or
+        // collide with some occupied space
+      }
+      return isIllegal;
     } else if (direction === "left") {
     }
   }
