@@ -91,11 +91,11 @@ export class RotatingShape {
     return str;
   }
 
-  extractElements(rotatingShape) {
+  extractElements() {
     let elements = [];
-    for (let y = 0; y < rotatingShape.height; y++) {
-      for (let x = 0; x < rotatingShape.width; x++) {
-        let element = rotatingShape.characters[y * rotatingShape.width + x];
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        let element = this.characters[y * this.width + x];
         if (element !== ".") {
           elements.push({ x, y, element });
         }

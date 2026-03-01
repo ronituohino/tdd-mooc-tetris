@@ -24,12 +24,12 @@ export class Board {
   }
 
   toString() {
-    let boardStr = ".".repeat(this.width * this.height);
+    let arr = [].fill(".", 0, this.width * this.height);
     for (let s = 0; s < this.occupiedSpots.length; s++) {
       let spot = this.occupiedSpots[s];
-      boardStr[spot.y * this.height + spot.x] = spot.element;
+      arr[spot.y * this.height + spot.x] = spot.element;
     }
-    return boardStr;
+    return arr.join("");
   }
 
   drop(shape) {
@@ -61,7 +61,7 @@ export class Board {
       this.fallingShape
         .extractElements()
         .forEach((spot) =>
-          this.occupiedSpots.push({ x: spot.x + this.shapePosX, y: spot.y + this.shapePosY, element })
+          this.occupiedSpots.push({ x: spot.x + this.shapePosX, y: spot.y + this.shapePosY, element: spot.element })
         );
       this.fallingShape = undefined;
     } else {
