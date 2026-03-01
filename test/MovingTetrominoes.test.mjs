@@ -97,8 +97,45 @@ describe("A falling tetromino cannot be moved beyond", () => {
   });
 });
 
+function fallToBottom(board) {
+  for (let i = 0; i < 10; i++) {
+    board.tick();
+  }
+}
+
 describe("A falling tetromino cannot be moved through", () => {
-  test.skip("other blocks on the left", () => {});
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("other blocks on the left", () => {
+    board.drop(Tetromino.O_SHAPE);
+    fallToBottom(board);
+    board.drop(Tetromino.O_SHAPE);
+    board.moveRight();
+    board.moveRight();
+    board.tick();
+    board.tick();
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ......OO..
+       ....OOOO..
+       ....OO....`
+    );
+    board.moveLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ......OO..
+       ....OOOO..
+       ....OO....`
+    );
+  });
   test.skip("other blocks on the right", () => {});
   test.skip("other blocks below (will stop falling)", () => {});
 });

@@ -72,6 +72,10 @@ export class Board {
 
   // input
   moveLeft() {
+    const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
+    const newPos = this.shapePosY + 1;
+    let newPosIllegal = false;
+
     let minX = this.fallingShape.width;
     this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
       if (someChar.x < minX) {
