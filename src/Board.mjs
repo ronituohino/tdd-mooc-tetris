@@ -104,13 +104,7 @@ export class Board {
     }
   }
   moveDown() {
-    let maxY = 0;
-    this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
-      if (someChar.y > maxY) {
-        maxY = someChar.x;
-      }
-    });
-    if (this.shapePosY < this.height - maxY - 1) {
+    if (!this.isIllegalMove(0, 1)) {
       this.shapePosY += 1;
     }
   }
