@@ -4,7 +4,24 @@ import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
 describe("A falling Tetromino can be rotated", () => {
-  test.skip("left in the air", () => {});
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("left in the air", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.tick();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ....T.....
+       ...TT.....
+       ....T.....
+       ..........
+       ..........`
+    );
+  });
   test.skip("right in the air", () => {});
   test.skip("left while touching a wall", () => {});
   test.skip("right while touching a wall", () => {});
