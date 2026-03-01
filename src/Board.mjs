@@ -97,6 +97,7 @@ export class Board {
     if (direction === "right") {
       testShape = this.fallingShape.rotateRight();
     } else if (direction === "left") {
+      testShape = this.fallingShape.rotateLeft();
     }
 
     const coordsAndChars = testShape.extractCoordinatesAndCharacters();
@@ -105,8 +106,8 @@ export class Board {
       const someChar = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board boundaries or
       // collide with some occupied space
-      const newX = someChar.x + this.shapePosX + movementX;
-      const newY = someChar.y + this.shapePosY + movementY;
+      const newX = someChar.x + this.shapePosX;
+      const newY = someChar.y + this.shapePosY;
       if (
         newX < 0 ||
         newX >= this.width ||
