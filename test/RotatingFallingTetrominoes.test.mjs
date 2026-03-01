@@ -162,7 +162,23 @@ describe("A falling Tetromino cannot be rotated", () => {
        ....OO....`
     );
   });
-  test.skip("when block would reach higher than before (no floor kick)", () => {});
+  test("when block would reach higher than before (no floor kick)", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.tick();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.rotateLeft();
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ....T.....
+       ...TTT....`
+    );
+  });
 });
 
 describe("Wall kick works on", () => {
