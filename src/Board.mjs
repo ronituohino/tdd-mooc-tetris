@@ -24,10 +24,14 @@ export class Board {
   }
 
   toString() {
-    let arr = [].fill(".", 0, this.width * this.height);
+    let arr = [];
+    for (let i = 0; i < this.width * this.height; i++) {
+      arr.push(".");
+    }
+    console.log(arr);
     for (let s = 0; s < this.occupiedSpots.length; s++) {
       let spot = this.occupiedSpots[s];
-      arr[spot.y * this.height + spot.x] = spot.element;
+      arr[spot.y * this.width + spot.x] = spot.element;
     }
     return arr.join("");
   }
