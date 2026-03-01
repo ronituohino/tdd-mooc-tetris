@@ -27,6 +27,7 @@ export class Board {
     let boardStr = ".".repeat(this.width * this.height);
     for (let s = 0; s < this.occupiedSpots.length; s++) {
       let spot = this.occupiedSpots[s];
+      boardStr[spot.y * this.height + spot.x] = spot.element;
     }
     return boardStr;
   }
@@ -57,7 +58,11 @@ export class Board {
 
     if (newPos >= this.height || this.occupiedSpots.some((os) => os.y === newPos && os.x === this.shapePosX)) {
       // turn falling shape into static
-      this.occupiedSpots.push({ x: this.shapePosX, y: this.shapePosY, shape: this.fallingShape });
+      this.fallingShape
+        .extractElements()
+        .forEach((spot) =>
+          this.occupiedSpots.push({ x: spot.x + this.shapePosX, y: spot.y + this.shapePosY, element })
+        );
       this.fallingShape = undefined;
     } else {
       this.shapePosY = newPos;

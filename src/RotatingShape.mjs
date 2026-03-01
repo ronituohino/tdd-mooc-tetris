@@ -97,7 +97,7 @@ export class RotatingShape {
       for (let x = 0; x < rotatingShape.width; x++) {
         let element = rotatingShape.characters[y * rotatingShape.width + x];
         if (element !== ".") {
-          elements.push([x, y, element]);
+          elements.push({ x, y, element });
         }
       }
     }
