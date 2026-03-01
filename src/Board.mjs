@@ -126,9 +126,7 @@ export class Board {
       return;
     }
 
-    let newPosIllegal = this.isIllegalMove(0, 1);
-
-    if (newPosIllegal) {
+    if (this.isIllegalMove(0, 1)) {
       // turn falling shape into static
       this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) =>
         this.occupiedSpots.push({
