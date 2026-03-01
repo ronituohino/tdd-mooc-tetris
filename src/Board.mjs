@@ -111,7 +111,7 @@ export class Board {
       }
     }
 
-    if (!newPosIllegal) {
+    if (!this.isIllegalMove(-1, 0)) {
       this.shapePosX -= 1;
     }
   }
