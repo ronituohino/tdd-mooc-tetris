@@ -91,6 +91,11 @@ export class RotatingShape {
     return str;
   }
 
+  /** Goes through the shape and extracts shape characters into an array [{x,y,element}, ...]
+   *  x and y are in local shape coordinates.
+   *
+   *  E.g. [{x: 1, y: 0, element: "T"}, {x:0, y:1, element: "T"}, ...]
+   */
   extractElements() {
     let elements = [];
     for (let y = 0; y < this.height; y++) {

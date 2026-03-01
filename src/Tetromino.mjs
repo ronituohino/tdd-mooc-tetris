@@ -25,5 +25,4 @@ export class Tetromino {
      ...`,
     "no-rotate"
   );
-  static ONE = RotatingShape.fromString("X");
 }

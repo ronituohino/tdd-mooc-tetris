@@ -28,6 +28,7 @@ export class Board {
     for (let i = 0; i < this.width * this.height; i++) {
       arr.push(".");
     }
+
     this.fallingShape?.extractElements().forEach((spot) => {
       arr[(spot.y + this.shapePosY) * this.width + (spot.x + this.shapePosX)] = spot.element;
     });
@@ -35,6 +36,8 @@ export class Board {
       let spot = this.occupiedSpots[s];
       arr[spot.y * this.width + spot.x] = spot.element;
     }
+
+    // add \n chars between lines
     for (let y = 0; y < this.height; y++) {
       arr.splice((y + 1) * this.width + y, 0, "\n");
     }
