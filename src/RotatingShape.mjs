@@ -90,4 +90,15 @@ export class RotatingShape {
     }
     return str;
   }
+
+  extractElements(rotatingShape) {
+    let elements = [];
+    for (let y = 0; y < rotatingShape.height; y++) {
+      for (let x = 0; x < rotatingShape.width; x++) {
+        let element = rotatingShape.characters[y * rotatingShape.width + x]
+        if 
+      }
+    }
+    return elements;
+  }
 }
