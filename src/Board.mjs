@@ -77,9 +77,12 @@ export class Board {
       const someChar = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board boundaries or
       // collide with some occupied space
-      const newX = someChar.x + this.shapePosX + movementX
+      const newX = someChar.x + this.shapePosX + movementX;
+      const newY = someChar.y + this.shapePosY + movementY;
       if (
-        newX < 0 || newX >= this.width ||
+        newX < 0 ||
+        newX >= this.width ||
+        newY >= this.height ||
         this.occupiedSpots.some(
           (os) => someChar.x + this.shapePosX - 1 === os.x && someChar.y + this.shapePosY === os.y
         )
