@@ -83,7 +83,15 @@ export class Board {
     }
   }
   moveRight() {
-    this.shapePosX += 1;
+    let maxX = 0;
+    this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
+      if (someChar.x > maxX) {
+        maxX = someChar.x;
+      }
+    });
+    if (this.shapePosX < this.width - maxX - 1) {
+      this.shapePosX += 1;
+    }
   }
   moveDown() {
     this.shapePosY += 1;
