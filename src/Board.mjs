@@ -72,7 +72,15 @@ export class Board {
 
   // input
   moveLeft() {
-    this.shapePosX -= 1;
+    let minX = this.fallingShape.width;
+    this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
+      if (someChar.x < minX) {
+        minX = someChar.x;
+      }
+    });
+    if (this.shapePosX > 0 - minX) {
+      this.shapePosX -= 1;
+    }
   }
   moveRight() {
     this.shapePosX += 1;
