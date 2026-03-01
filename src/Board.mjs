@@ -100,15 +100,6 @@ export class Board {
       const someChar = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board boundaries or
       // collide with some occupied space
-      if (
-        someChar.x + this.shapePosX - 1 < 0 ||
-        this.occupiedSpots.some(
-          (os) => someChar.x + this.shapePosX - 1 === os.x && someChar.y + this.shapePosY === os.y
-        )
-      ) {
-        newPosIllegal = true;
-        break;
-      }
     }
 
     if (!this.isIllegalMove(-1, 0)) {
