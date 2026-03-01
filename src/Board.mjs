@@ -95,10 +95,14 @@ export class Board {
   isIllegalRotation(direction) {
     let testShape;
     if (direction === "right") {
-      const testShape = this.fallingShape.rotateRight();
-      const coordsAndChars = testShape.extractCoordinatesAndCharacters();
+      testShape = this.fallingShape.rotateRight();
     } else if (direction === "left") {
     }
+
+    const coordsAndChars = testShape.extractCoordinatesAndCharacters();
+    let isIllegal = false;
+    for (let cc = 0; cc < coordsAndChars.length; cc++) {}
+    return isIllegal;
   }
 
   // input
