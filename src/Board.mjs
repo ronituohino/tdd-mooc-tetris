@@ -4,7 +4,6 @@ export class Board {
 
   // falling shape
   fallingShape;
-  hasFallingShape;
   shapePosX;
   shapePosY;
 
@@ -17,8 +16,7 @@ export class Board {
 
     this.shapePosX = -1;
     this.shapePosY = -1;
-    this.fallingShape = "";
-    this.hasFallingShape = false;
+    this.fallingShape = undefined;
 
     this.occupiedSpots = [];
   }
@@ -51,18 +49,17 @@ export class Board {
   }
 
   drop(shape) {
-    if (this.hasFallingShape) {
+    if (this.fallingShape !== undefined) {
       throw new Error("already falling");
     }
 
     this.shapePosX = Math.floor(this.width / 2);
     this.shapePosY = 0;
     this.fallingShape = shape;
-    this.hasFallingShape = true;
   }
 
   hasFalling() {
-    return this.hasFallingShape;
+    return this.fallingShape !== undefined;
   }
 
   tick() {
@@ -72,8 +69,7 @@ export class Board {
       // turn falling shape into static
       this.occupiedSpots.push({ x: this.shapePosX, y: this.shapePosY, style: this.fallingShape });
 
-      this.hasFallingShape = false;
-      this.fallingShape = "";
+      this.fallingShape = undefined;
       //this.shapePosX = -1;
       //this.shapePosY = -1;
     } else {
