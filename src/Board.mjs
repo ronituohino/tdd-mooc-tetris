@@ -71,7 +71,13 @@ export class Board {
   }
 
   isIllegalMove(movementX, movementY) {
+    const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
     let isIllegal = false;
+    for (let cc = 0; cc < coordsAndChars.length; cc++) {
+      const someChar = coordsAndChars[cc];
+      // if some of the spots on the falling shape are past the board boundaries or
+      // collide with some occupied space
+    }
   }
 
   // input
