@@ -73,28 +73,23 @@ export class Board {
   // input
   moveLeft() {
     const coordsAndChars = this.fallingShape.extractCoordinatesAndCharacters();
-    const newPos = this.shapePosX - 1;
     let newPosIllegal = false;
     for (let cc = 0; cc < coordsAndChars.length; cc++) {
       const someChar = coordsAndChars[cc];
       // if some of the spots on the falling shape are past the board boundaries or
       // collide with some occupied space
       if (
-        someChar.x + newPos < 0 ||
-        this.occupiedSpots.some((os) => someChar.y + newPos === os.y && someChar.x + this.shapePosX === os.x)
+        someChar.x + this.shapePosX - 1 < 0 ||
+        this.occupiedSpots.some(
+          (os) => someChar.x + this.shapePosX - 1 === os.x && someChar.y + this.shapePosY === os.y
+        )
       ) {
         newPosIllegal = true;
         break;
       }
     }
 
-    let minX = this.fallingShape.width;
-    this.fallingShape.extractCoordinatesAndCharacters().forEach((someChar) => {
-      if (someChar.x < minX) {
-        minX = someChar.x;
-      }
-    });
-    if (this.shapePosX > 0 - minX) {
+    if (!newPosIllegal) {
       this.shapePosX -= 1;
     }
   }
