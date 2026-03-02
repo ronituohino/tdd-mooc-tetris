@@ -7,13 +7,7 @@ export class ArikaShape {
     this.currentState = currentState;
   }
 
-  rotateRight() {
-    let newState = this.currentState + 1;
-    if (newState >= this.states.length) {
-      newState = 0;
-    }
-    return new ArikaShape(this.states, newState);
-  }
+  rotateRight() {}
   rotateLeft() {}
   toString() {}
   extractCoordinatesAndCharacters() {}
