@@ -182,13 +182,13 @@ describe("A falling Tetromino cannot be rotated", () => {
   });
 });
 
-describe("Wall kick works on", () => {
+describe("Wall kick works", () => {
   let board;
   beforeEach(() => {
     board = new Board(8, 6);
   });
 
-  test("the left side", () => {
+  test("on the left side", () => {
     board.drop(Tetromino.T_SHAPE);
     board.rotateRight();
     board.moveLeft();
@@ -214,7 +214,7 @@ describe("Wall kick works on", () => {
        ........`
     );
   });
-  test("the right side", () => {
+  test("on the right side", () => {
     board.drop(Tetromino.T_SHAPE);
     board.rotateLeft();
     board.moveRight();
@@ -236,6 +236,25 @@ describe("Wall kick works on", () => {
        ......T.
        .....TTT
        ........
+       ........
+       ........`
+    );
+  });
+  test("with an I shape", () => {
+    board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.moveLeft();
+    board.moveLeft();
+    board.moveLeft();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `........
+       ........
+       ........
+       IIII....
        ........
        ........`
     );

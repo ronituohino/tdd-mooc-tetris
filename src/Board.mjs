@@ -129,9 +129,14 @@ export class Board {
   rotateLeft() {
     if (!this.isIllegalRotation("left", 0, 0)) {
       this.fallingShape = this.fallingShape.rotateLeft();
-    } else if (!this.isIllegalRotation("left", 1, 0)) {
-      this.fallingShape = this.fallingShape.rotateLeft();
-      this.shapePosX += 1;
+    } else {
+      for (let i = 1; i < Math.max(1, Math.min(this.fallingShape.width, this.fallingShape.height) - 1); i++) {
+        if (!this.isIllegalRotation("left", i, 0)) {
+          this.fallingShape = this.fallingShape.rotateLeft();
+          this.shapePosX += i;
+          break;
+        }
+      }
     }
   }
   rotateRight() {
