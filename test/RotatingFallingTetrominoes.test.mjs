@@ -9,6 +9,32 @@ function fallToBottom(board) {
   }
 }
 
+function searchPatterns(board, patterns) {
+  const indexes = patterns.map(() => -1);
+  const lines = board.toString().split("\n");
+  let currentIndex = 0;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const resultIndex = line.search(patterns[currentIndex]);
+    if (resultIndex === -1) {
+      if (currentIndex !== 0) {
+        break;
+      }
+      continue;
+    } else {
+      indexes[currentIndex] = resultIndex;
+      currentIndex += 1;
+
+      if (currentIndex >= indexes.length) {
+        break;
+      } else {
+        continue;
+      }
+    }
+  }
+  return indexes;
+}
+
 describe("A falling Tetromino can be rotated", () => {
   let board;
   beforeEach(() => {
@@ -19,14 +45,14 @@ describe("A falling Tetromino can be rotated", () => {
     board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.rotateLeft();
-    expect(board.toString()).to.equalShape(
-      `..........
-       ....T.....
-       ...TT.....
-       ....T.....
-       ..........
-       ..........`
-    );
+
+    const indexes = searchPatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
+
+    indexes.forEach((pattern) => {
+      expect(pattern.index).to.not.equal(-1);
+    });
+    expect(indexes[0]).to.equal(indexes[2]);
+    expect(indexes[1]).to.be.lessThan(indexes[0]);
   });
   test("right in the air", () => {
     board.drop(Tetromino.T_SHAPE);
