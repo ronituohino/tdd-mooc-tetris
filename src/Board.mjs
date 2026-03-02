@@ -92,14 +92,14 @@ export class Board {
     return isIllegal;
   }
 
-  isIllegalRotation(direction) {
+  isIllegalRotation(direction, movementX, movementY) {
     let testShape;
     if (direction === "right") {
       testShape = this.fallingShape.rotateRight();
     } else if (direction === "left") {
       testShape = this.fallingShape.rotateLeft();
     }
-    return this.isIllegalMove(testShape, 0, 0);
+    return this.isIllegalMove(testShape, movementX, movementY);
   }
 
   // input
@@ -119,12 +119,12 @@ export class Board {
     }
   }
   rotateLeft() {
-    if (!this.isIllegalRotation("left")) {
+    if (!this.isIllegalRotation("left", 0, 0)) {
       this.fallingShape = this.fallingShape.rotateLeft();
     }
   }
   rotateRight() {
-    if (!this.isIllegalRotation("right")) {
+    if (!this.isIllegalRotation("right", 0, 0)) {
       this.fallingShape = this.fallingShape.rotateRight();
     }
   }
