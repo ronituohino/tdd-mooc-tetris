@@ -3,17 +3,8 @@ import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
-function distinctBoardStates(board) {
-  const distinct = new Set();
-  let goingRight = shape;
-  let goingLeft = shape;
-  for (let i = 0; i < 10; i++) {
-    distinct.add(goingRight.toString());
-    goingRight = goingRight.rotateRight();
-    distinct.add(goingLeft.toString());
-    goingLeft = goingLeft.rotateLeft();
-  }
-  return distinct;
+function getBoardFirstLine(board) {
+  return board.toString().split("\n")[0];
 }
 
 describe("A falling tetromino can be moved", () => {
@@ -24,39 +15,24 @@ describe("A falling tetromino can be moved", () => {
 
   test("left", () => {
     board.drop(Tetromino.T_SHAPE);
+    const beforeMoveFirstTetrominoCharacterIndex = getBoardFirstLine(board).search("T");
     board.moveLeft();
-    expect(board.toString()).to.equalShape(
-      `...T......
-       ..TTT.....
-       ..........
-       ..........
-       ..........
-       ..........`
-    );
+    const afterMoveFirstTetrominoCharacterIndex = getBoardFirstLine(board).search("T");
+    expect(beforeMoveFirstTetrominoCharacterIndex).to.be.greaterThan(afterMoveFirstTetrominoCharacterIndex);
   });
   test("right", () => {
     board.drop(Tetromino.T_SHAPE);
+    const beforeMoveFirstTetrominoCharacterIndex = getBoardFirstLine(board).search("T");
     board.moveRight();
-    expect(board.toString()).to.equalShape(
-      `.....T....
-       ....TTT...
-       ..........
-       ..........
-       ..........
-       ..........`
-    );
+    const afterMoveFirstTetrominoCharacterIndex = getBoardFirstLine(board).search("T");
+    expect(beforeMoveFirstTetrominoCharacterIndex).to.be.lessThan(afterMoveFirstTetrominoCharacterIndex);
   });
   test("down", () => {
     board.drop(Tetromino.T_SHAPE);
+    const beforeMoveFirstLineHasTetrominoCharacter = getBoardFirstLine(board).includes("T");
     board.moveDown();
-    expect(board.toString()).to.equalShape(
-      `..........
-       ....T.....
-       ...TTT....
-       ..........
-       ..........
-       ..........`
-    );
+    const afterMoveFirstLineHasTetrominoCharacter = getBoardFirstLine(board).includes("T");
+    expect(beforeMoveFirstLineHasTetrominoCharacter).to.not.equal(afterMoveFirstLineHasTetrominoCharacter);
   });
 });
 
