@@ -99,7 +99,13 @@ export class Board {
     } else if (direction === "left") {
       testShape = this.fallingShape.rotateLeft();
     }
-    return this.isIllegalMove(testShape, 0, 0);
+    if (!this.isIllegalMove(testShape, 0, 0)) {
+      return false;
+    }
+
+    // wall kick
+
+    return true;
   }
 
   // input
