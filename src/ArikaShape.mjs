@@ -4,4 +4,9 @@ export class ArikaShape {
   constructor(states) {
     this.states = states;
   }
+
+  rotateRight() {}
+  rotateLeft() {}
+  toString() {}
+  extractCoordinatesAndCharacters() {}
 }
