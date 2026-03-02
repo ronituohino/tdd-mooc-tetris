@@ -240,7 +240,7 @@ describe("Wall kick works", () => {
        ........`
     );
   });
-  test("with an I shape", () => {
+  test("with an I shape on the left", () => {
     board.drop(Tetromino.I_SHAPE);
     board.rotateRight();
     board.tick();
@@ -255,6 +255,26 @@ describe("Wall kick works", () => {
        ........
        ........
        IIII....
+       ........
+       ........`
+    );
+  });
+  test("with an I shape on the right", () => {
+    board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `........
+       ........
+       ........
+       ....IIII
        ........
        ........`
     );
