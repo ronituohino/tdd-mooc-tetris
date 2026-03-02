@@ -3,6 +3,19 @@ import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
+function distinctBoardStates(board) {
+  const distinct = new Set();
+  let goingRight = shape;
+  let goingLeft = shape;
+  for (let i = 0; i < 10; i++) {
+    distinct.add(goingRight.toString());
+    goingRight = goingRight.rotateRight();
+    distinct.add(goingLeft.toString());
+    goingLeft = goingLeft.rotateLeft();
+  }
+  return distinct;
+}
+
 describe("A falling tetromino can be moved", () => {
   let board;
   beforeEach(() => {

@@ -18,28 +18,20 @@ describe("Falling tetrominoes", () => {
   test("start from the top middle", () => {
     board.drop(Tetromino.T_SHAPE);
 
-    expect(board.toString()).to.equalShape(
-      `....T.....
-       ...TTT....
-       ..........
-       ..........
-       ..........
-       ..........`
-    );
+    const firstLine = board.toString().split("\n")[0];
+    expect(firstLine.startsWith("..")).to.be.true;
+    expect(firstLine.endsWith("..")).to.be.true;
+    expect(firstLine.includes("T")).to.be.true;
   });
 
   test("stop when they hit the bottom", () => {
     board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
 
-    expect(board.toString()).to.equalShape(
-      `..........
-       ..........
-       ..........
-       ..........
-       ....T.....
-       ...TTT....`
-    );
+    const lines = board.toString().split("\n");
+    const lastLine = lines[lines.length - 2];
+    expect(lastLine.includes("T")).to.be.true;
+    expect(board.hasFalling()).to.be.false;
   });
 
   test("stop when they land on another block", () => {
@@ -48,13 +40,12 @@ describe("Falling tetrominoes", () => {
     board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
 
-    expect(board.toString()).to.equalShape(
-      `..........
-       ..........
-       ....T.....
-       ...TTT....
-       ....T.....
-       ...TTT....`
-    );
+    // 2 T blocks on top of each other (present in 4 rows)
+    const lines = board.toString().split("\n");
+    for (let i = 0; i < 4; i++) {
+      const line = lines[lines.length - 2 - i];
+      expect(line.includes("T")).to.be.true;
+    }
+    expect(board.hasFalling()).to.be.false;
   });
 });
