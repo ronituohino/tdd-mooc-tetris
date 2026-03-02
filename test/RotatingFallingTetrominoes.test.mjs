@@ -245,19 +245,58 @@ describe("Wall kick works on", () => {
 describe("Wall kick does not work on", () => {
   let board;
   beforeEach(() => {
-    board = new Board(8, 6);
+    board = new Board(8, 8);
   });
 
   test("the left side if it is blocked", () => {
     board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    board.moveLeft();
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
+    board.moveLeft();
+    board.moveLeft();
+    board.moveLeft();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.rotateLeft();
     expect(board.toString()).to.equalShape(
-      `.IIII...
+      `........
        ........
        ........
-       ........
-       ........
-       ........`
+       T.......
+       TTI.....
+       T.I.....
+       ..I.....
+       ..I.....`
     );
   });
-  test.skip("the right side if it is blocked", () => {});
+  test("the right side if it is blocked", () => {
+    board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    board.moveRight();
+    board.moveRight();
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.tick();
+    board.tick();
+    board.tick();
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `........
+       ........
+       ........
+       ......T.
+       .....ITT
+       .....IT.
+       .....I..
+       .....I..`
+    );
+  });
 });
