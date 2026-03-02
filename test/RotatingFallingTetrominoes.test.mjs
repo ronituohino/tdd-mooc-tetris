@@ -243,6 +243,21 @@ describe("Wall kick works on", () => {
 });
 
 describe("Wall kick does not work on", () => {
-  test.skip("the left side if it is blocked", () => {});
+  let board;
+  beforeEach(() => {
+    board = new Board(8, 6);
+  });
+
+  test("the left side if it is blocked", () => {
+    board.drop(Tetromino.I_SHAPE);
+    expect(board.toString()).to.equalShape(
+      `.IIII...
+       ........
+       ........
+       ........
+       ........
+       ........`
+    );
+  });
   test.skip("the right side if it is blocked", () => {});
 });

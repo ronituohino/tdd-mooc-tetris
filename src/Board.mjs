@@ -62,7 +62,15 @@ export class Board {
     }
 
     this.shapePosX = Math.floor(this.width / 2 - tetromino.width / 2);
-    this.shapePosY = 0;
+
+    let minY = tetromino.height;
+    tetromino.extractCoordinatesAndCharacters().forEach((char) => {
+      if (char.y < minY) {
+        minY = char.y;
+      }
+    });
+    this.shapePosY = 0 - minY;
+
     this.fallingShape = tetromino;
   }
 
