@@ -129,6 +129,9 @@ export class Board {
   rotateRight() {
     if (!this.isIllegalRotation("right", 0, 0)) {
       this.fallingShape = this.fallingShape.rotateRight();
+    } else if (!this.isIllegalRotation("right", -1, 0)) {
+      this.fallingShape = this.fallingShape.rotateRight();
+      this.shapePosX -= 1;
     }
   }
 

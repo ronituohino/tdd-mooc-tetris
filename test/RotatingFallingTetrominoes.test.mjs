@@ -150,14 +150,15 @@ describe("A falling Tetromino cannot be rotated", () => {
     board.drop(Tetromino.O_SHAPE);
     fallToBottom(board);
     board.drop(Tetromino.T_SHAPE);
+    board.moveRight();
     board.tick();
     board.tick();
     board.rotateRight();
     expect(board.toString()).to.equalShape(
       `..........
        ..........
-       ....T.....
-       ...TTT....
+       .....T....
+       ....TTT...
        ....OO....
        ....OO....`
     );
@@ -189,10 +190,10 @@ describe("Wall kick works on", () => {
 
   test("the left side", () => {
     board.drop(Tetromino.T_SHAPE);
-    board.moveLeft();
-    board.moveLeft();
-    board.moveLeft();
     board.rotateRight();
+    board.moveLeft();
+    board.moveLeft();
+    board.moveLeft();
     board.moveLeft();
     board.tick();
     expect(board.toString()).to.equalShape(
@@ -213,7 +214,32 @@ describe("Wall kick works on", () => {
        ........`
     );
   });
-  test.skip("the right side", () => {});
+  test("the right side", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `........
+       .......T
+       ......TT
+       .......T
+       ........
+       ........`
+    );
+    board.rotateRight();
+    expect(board.toString()).to.equalShape(
+      `........
+       ......T.
+       .....TTT
+       ........
+       ........
+       ........`
+    );
+  });
 });
 
 describe("Wall kick does not work on", () => {
