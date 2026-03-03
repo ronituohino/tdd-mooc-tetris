@@ -5,8 +5,8 @@ export class RotatingShape {
   // undefined, "no-rotate", "2-state", "arika"
   rotationConstraint;
   rotationOtherState;
-  arikaCurrentState = 0;
   arikaStates;
+  arikaCurrentState;
 
   constructor(characters, width, height, rotationConstraint, rotationOtherState, arikaStates, currentArikaState) {
     this.characters = characters;
