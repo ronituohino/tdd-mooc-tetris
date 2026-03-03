@@ -29,11 +29,15 @@ export class RotatingShape {
     }
     if (rotationConstraint === "arika") {
       const cleanedStates = [];
+      let width = 0;
+      let height = 0;
       for (let i = 0; i < arikaStates.length; i++) {
         const cleaned = RotatingShape.parseText(arikaStates[i]);
         cleanedStates.push(cleaned[0]);
+        width = cleaned[1];
+        height = cleaned[2];
       }
-      return new RotatingShape(undefined, undefined, undefined, rotationConstraint, undefined, cleanedStates);
+      return new RotatingShape(undefined, width, height, rotationConstraint, undefined, cleanedStates);
     }
 
     const [characters, widht, height] = RotatingShape.parseText(str);
@@ -130,14 +134,7 @@ export class RotatingShape {
     let coordsAndChars = [];
     if (this.rotationConstraint === "arika") {
       const [rawChars, width, height] = RotatingShape.parseText(this.arikaStates[this.arikaCurrentState]);
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          const char = rawChars[y * this.width + x];
-          if (char !== ".") {
-            coordsAndChars.push({ x, y, char });
-          }
-        }
-      }
+
       return coordsAndChars;
     }
 
