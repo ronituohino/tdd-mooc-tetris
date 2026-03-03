@@ -1,15 +1,14 @@
 export class RotatingShape {
   width;
   height;
-  rotationOtherState;
   states;
-  arikaCurrentState;
+  currentState;
 
   constructor(width, height, arikaStates, currentArikaState) {
     this.width = width;
     this.height = height;
     this.states = arikaStates;
-    this.arikaCurrentState = currentArikaState;
+    this.currentState = currentArikaState;
   }
 
   static parseText(str) {
@@ -36,7 +35,7 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    let newState = this.arikaCurrentState + 1;
+    let newState = this.currentState + 1;
     if (newState >= this.states.length) {
       newState = 0;
     }
@@ -44,7 +43,7 @@ export class RotatingShape {
   }
 
   rotateLeft() {
-    let newState = this.arikaCurrentState - 1;
+    let newState = this.currentState - 1;
     if (newState < 0) {
       newState = this.states.length - 1;
     }
@@ -55,7 +54,7 @@ export class RotatingShape {
     let str = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        str += this.states[this.arikaCurrentState][y * this.width + x];
+        str += this.states[this.currentState][y * this.width + x];
       }
       str += "\n";
     }
@@ -71,7 +70,7 @@ export class RotatingShape {
     let coordsAndChars = [];
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        const char = this.states[this.arikaCurrentState][y * this.width + x];
+        const char = this.states[this.currentState][y * this.width + x];
         if (char !== ".") {
           coordsAndChars.push({ x, y, char });
         }
