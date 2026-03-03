@@ -124,7 +124,16 @@ export class RotatingShape {
   extractCoordinatesAndCharacters() {
     let coordsAndChars = [];
     if (this.rotationConstraint === "arika") {
-      const [rawChars, width, height] = this.parseText(this.arikaStates[this.arikaCurrentState]);
+      const [rawChars, width, height] = RotatingShape.parseText(this.arikaStates[this.arikaCurrentState]);
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const char = rawChars[y * this.width + x];
+          if (char !== ".") {
+            coordsAndChars.push({ x, y, char });
+          }
+        }
+      }
+      return coordsAndChars;
     }
 
     for (let y = 0; y < this.height; y++) {
