@@ -2,16 +2,18 @@ export class RotatingShape {
   characters;
   width;
   height;
-  // undefined, "no-rotate", "2-state"
+  // undefined, "no-rotate", "2-state", "arika"
   rotationConstraint;
   rotationOtherState;
+  arikaStates;
 
-  constructor(characters, width, height, rotationConstraint, rotationOtherState) {
+  constructor(characters, width, height, rotationConstraint, rotationOtherState, arikaStates) {
     this.characters = characters;
     this.width = width;
     this.height = height;
     this.rotationConstraint = rotationConstraint;
     this.rotationOtherState = rotationOtherState;
+    this.arikaStates = arikaStates;
   }
 
   static parseText(str) {
@@ -19,7 +21,7 @@ export class RotatingShape {
     return [charArr.join(""), charArr[0].length, charArr.length];
   }
 
-  static fromString(str, rotationConstraint, rotationOtherState) {
+  static fromString(str, rotationConstraint, rotationOtherState, arikaStates) {
     if (typeof str !== "string") {
       return undefined;
     }

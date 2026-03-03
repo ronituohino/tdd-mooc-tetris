@@ -38,6 +38,10 @@ export class Board {
         }
       }
     }
+
+    this.fallingShape = RotatingShape.fromString("", "arika", undefined, fallingShapeStates);
+    this.shapePosX = fallingShapePosX;
+    this.shapePosY = fallingShapePosY;
   }
 
   // rendering logic

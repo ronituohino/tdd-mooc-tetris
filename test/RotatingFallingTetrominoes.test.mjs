@@ -113,14 +113,16 @@ describe("A falling Tetromino can be rotated", () => {
        ..........
        ..........
        ....OO....
-       ....OO....`
+       ....OO....`,
+      [
+        `.T.
+         TTT
+         ...`,
+      ],
+      4,
+      2
     );
 
-    board.drop(Tetromino.T_SHAPE);
-    board.moveRight();
-    board.moveRight();
-    board.tick();
-    board.tick();
     board.rotateLeft();
     expect(board.toString()).to.equalShape(
       `..........
