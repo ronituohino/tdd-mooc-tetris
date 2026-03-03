@@ -1,9 +1,6 @@
 export class RotatingShape {
-  characters;
   width;
   height;
-  // undefined, "no-rotate", "2-state", "arika"
-  rotationConstraint;
   rotationOtherState;
   arikaStates;
   arikaCurrentState;
