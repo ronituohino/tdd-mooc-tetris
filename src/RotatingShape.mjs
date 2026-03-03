@@ -69,15 +69,6 @@ export class RotatingShape {
     if (this.rotationConstraint === "no-rotate") {
       return this;
     }
-    if (this.rotationConstraint === "2-state") {
-      return new RotatingShape(
-        this.rotationOtherState,
-        this.width,
-        this.height,
-        this.rotationConstraint,
-        this.characters
-      );
-    }
 
     let str = "";
     for (let x = 0; x < this.width; x++) {
