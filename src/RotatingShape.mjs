@@ -111,14 +111,14 @@ export class RotatingShape {
   }
 
   toString() {
-    if (this.rotationConstraint === "arika") {
-      return this.arikaStates[this.arikaCurrentState];
-    }
-
     let str = "";
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        str += this.characters[y * this.width + x];
+        if (this.rotationConstraint === "arika") {
+          str += this.arikaStates[this.arikaCurrentState][y * this.width + x];
+        } else {
+          str += this.characters[y * this.width + x];
+        }
       }
       str += "\n";
     }
