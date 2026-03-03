@@ -48,6 +48,10 @@ export class Tetromino {
        ..I.
        ..I.
        ..I.`,
+      `....
+       IIII
+       ....
+       ....`,
     ],
   */
   static O_SHAPE = RotatingShape.fromString(
