@@ -24,6 +24,8 @@ export class Board {
   }
 
   seed(initalBoardState, fallingShapeStates, fallingShapePosX, fallingShapePosY) {
+    if (initalBoardState) {
+    }
     const charArr = initalBoardState.split("\n").map((lines) => lines.trim());
     const boardStr = charArr.join("");
     if (charArr[0].length != this.width || charArr.length != this.height) {

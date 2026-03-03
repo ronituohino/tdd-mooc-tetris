@@ -9,6 +9,21 @@ function fallToBottom(board) {
   }
 }
 
+const CUSTOM_T_BLOCK = [
+  `.T.
+   TTT
+   ...`,
+  `.T.
+   .TT
+   .T.`,
+  `...
+   TTT
+   .T.`,
+  `.T.
+   TT.
+   .T.`,
+];
+
 function searchConsecutivePatterns(board, patterns) {
   const indexes = patterns.map(() => -1);
   const lines = board.toString().split("\n");
@@ -42,16 +57,35 @@ describe("A falling Tetromino can be rotated", () => {
   });
 
   test("left in the air", () => {
-    board.drop(Tetromino.T_SHAPE);
-    board.tick();
-    board.rotateLeft();
+    board.seed(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`,
+      CUSTOM_T_BLOCK,
+      1,
+      1
+    );
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..T.......
+       .TTT......
+       ..........
+       ..........
+       ..........`
+    );
 
-    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
-    indexes.forEach((pattern) => {
-      expect(pattern.index).to.not.equal(-1);
-    });
-    expect(indexes[0]).to.equal(indexes[2]);
-    expect(indexes[1]).to.be.lessThan(indexes[0]);
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..T.......
+       .TT.......
+       ..T.......
+       ..........
+       ..........`
+    );
   });
   test("right in the air", () => {
     board.drop(Tetromino.T_SHAPE);
@@ -114,24 +148,10 @@ describe("A falling Tetromino can be rotated", () => {
        ..........
        ....OO....
        ....OO....`,
-      [
-        `.T.
-         TTT
-         ...`,
-        `.T.
-         .TT
-         .T.`,
-        `...
-         TTT
-         .T.`,
-        `.T.
-         TT.
-         .T.`,
-      ],
+      CUSTOM_T_BLOCK,
       5,
       2
     );
-
     expect(board.toString()).to.equalShape(
       `..........
        ..........
@@ -140,6 +160,7 @@ describe("A falling Tetromino can be rotated", () => {
        ....OO....
        ....OO....`
     );
+
     board.rotateLeft();
     expect(board.toString()).to.equalShape(
       `..........
@@ -151,12 +172,26 @@ describe("A falling Tetromino can be rotated", () => {
     );
   });
   test("right while touching another block", () => {
-    board.drop(Tetromino.O_SHAPE);
-    fallToBottom(board);
-    board.drop(Tetromino.T_SHAPE);
-    board.moveLeft();
-    board.tick();
-    board.tick();
+    board.seed(
+      `..........
+       ..........
+       ..........
+       ..........
+       ....OO....
+       ....OO....`,
+      CUSTOM_T_BLOCK,
+      2,
+      2
+    );
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...T......
+       ..TTT.....
+       ....OO....
+       ....OO....`
+    );
+
     board.rotateRight();
     expect(board.toString()).to.equalShape(
       `..........
