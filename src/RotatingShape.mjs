@@ -5,6 +5,7 @@ export class RotatingShape {
   // undefined, "no-rotate", "2-state", "arika"
   rotationConstraint;
   rotationOtherState;
+  arikaCurrentState = 0;
   arikaStates;
 
   constructor(characters, width, height, rotationConstraint, rotationOtherState, arikaStates) {
@@ -14,6 +15,7 @@ export class RotatingShape {
     this.rotationConstraint = rotationConstraint;
     this.rotationOtherState = rotationOtherState;
     this.arikaStates = arikaStates;
+    this.arikaCurrentState = 0;
   }
 
   static parseText(str) {
@@ -24,6 +26,9 @@ export class RotatingShape {
   static fromString(str, rotationConstraint, rotationOtherState, arikaStates) {
     if (typeof str !== "string") {
       return undefined;
+    }
+    if (rotationConstraint === "arika") {
+      return new RotatingShape(undefined, undefined, undefined, rotationConstraint, undefined, arikaStates);
     }
 
     const [characters, widht, height] = RotatingShape.parseText(str);
