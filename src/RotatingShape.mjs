@@ -56,7 +56,7 @@ export class RotatingShape {
       if (this.arikaCurrentState >= this.arikaStates.length - 1) {
         this.arikaCurrentState = 0;
       }
-      return this;
+      return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates);
     }
     if (this.rotationConstraint === "no-rotate") {
       return this;
@@ -86,7 +86,7 @@ export class RotatingShape {
       if (this.arikaCurrentState < 0) {
         this.arikaCurrentState = this.arikaStates.length - 1;
       }
-      return this;
+      return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates);
     }
     if (this.rotationConstraint === "no-rotate") {
       return this;
