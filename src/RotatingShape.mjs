@@ -69,13 +69,11 @@ export class RotatingShape {
   }
 
   rotateLeft() {
-    if (this.rotationConstraint === "arika") {
-      let newState = this.arikaCurrentState - 1;
-      if (newState < 0) {
-        newState = this.arikaStates.length - 1;
-      }
-      return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates, newState);
+    let newState = this.arikaCurrentState - 1;
+    if (newState < 0) {
+      newState = this.arikaStates.length - 1;
     }
+    return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates, newState);
   }
 
   toString() {
