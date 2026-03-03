@@ -61,7 +61,7 @@ export class RotatingShape {
   rotateRight() {
     if (this.rotationConstraint === "arika") {
       let newState = this.arikaCurrentState + 1;
-      if (newState >= this.arikaStates.length - 1) {
+      if (newState >= this.arikaStates.length) {
         newState = 0;
       }
       return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates, newState);

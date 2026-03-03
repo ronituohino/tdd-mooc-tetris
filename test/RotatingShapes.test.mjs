@@ -4,9 +4,18 @@ import { RotatingShape } from "../src/RotatingShape.mjs";
 
 describe("Rotating 3x3 shape", () => {
   let shape = RotatingShape.fromString(
-    `ABC
-     DEF
-     GHI`
+    "",
+    "arika",
+    undefined,
+    [
+      `ABC
+       DEF
+       GHI`,
+      `GDA
+       HEB
+       IFC`,
+    ],
+    0
   );
 
   test("initial orientation", () => {
