@@ -39,6 +39,10 @@ export class Tetromino {
      .....`
   );
   /*
+  static I_SHAPE = RotatingShape.fromString(
+    "",
+    "arika",
+    undefined,
   [
       `....
        IIII
@@ -57,6 +61,8 @@ export class Tetromino {
        ..I.
        ..I.`,
     ],
+    0
+);
   */
   static O_SHAPE = RotatingShape.fromString(
     `.OO
