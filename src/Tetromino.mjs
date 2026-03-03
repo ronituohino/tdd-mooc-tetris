@@ -49,13 +49,6 @@ export class Tetromino {
     ],
     0
   );
-
-  /*static O_SHAPE = RotatingShape.fromString(
-    `.OO
-     .OO
-     ...`,
-    "no-rotate"
-  );*/
   static O_SHAPE = RotatingShape.fromString(
     "",
     "arika",
