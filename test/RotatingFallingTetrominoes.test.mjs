@@ -117,28 +117,30 @@ describe("A falling Tetromino can be rotated", () => {
       [
         `.T.
          TTT
-         ...
-         `,
+         ...`,
         `.T.
          .TT
-         .T.
-         `,
+         .T.`,
         `...
          TTT
-         .T.
-         `,
+         .T.`,
         `.T.
          TT.
-         .T.
-         `,
+         .T.`,
       ],
-      4,
-      1
+      5,
+      2
     );
 
-    console.log(board.toString());
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ......T...
+       .....TTT..
+       ....OO....
+       ....OO....`
+    );
     board.rotateLeft();
-    console.log(board.toString());
     expect(board.toString()).to.equalShape(
       `..........
        ..........
