@@ -57,6 +57,10 @@ export class Tetromino {
     "no-rotate"
   );
   /*
+    "",
+    "arika",
+    undefined,
+    [
       `....
        .OO.
        .OO.
@@ -73,5 +77,7 @@ export class Tetromino {
        .OO.
        .OO.
        ....`,
+    ],
+    0,
    */
 }
