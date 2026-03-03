@@ -63,9 +63,10 @@ export class RotatingShape {
    */
   extractCoordinatesAndCharacters() {
     let coordsAndChars = [];
+    const currentStateChars = this.states[this.currentState];
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
-        const char = this.states[this.currentState][y * this.width + x];
+        const char = currentStateChars[y * this.width + x];
         if (char !== ".") {
           coordsAndChars.push({ x, y, char });
         }
