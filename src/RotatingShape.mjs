@@ -8,14 +8,14 @@ export class RotatingShape {
   arikaCurrentState = 0;
   arikaStates;
 
-  constructor(characters, width, height, rotationConstraint, rotationOtherState, arikaStates) {
+  constructor(characters, width, height, rotationConstraint, rotationOtherState, arikaStates, currentArikaState) {
     this.characters = characters;
     this.width = width;
     this.height = height;
     this.rotationConstraint = rotationConstraint;
     this.rotationOtherState = rotationOtherState;
     this.arikaStates = arikaStates;
-    this.arikaCurrentState = 0;
+    this.arikaCurrentState = currentArikaState;
   }
 
   static parseText(str) {
@@ -37,7 +37,7 @@ export class RotatingShape {
         width = cleaned[1];
         height = cleaned[2];
       }
-      return new RotatingShape(undefined, width, height, rotationConstraint, undefined, cleanedStates);
+      return new RotatingShape(undefined, width, height, rotationConstraint, undefined, cleanedStates, 0);
     }
 
     const [characters, widht, height] = RotatingShape.parseText(str);
