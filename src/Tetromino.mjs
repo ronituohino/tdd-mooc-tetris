@@ -7,13 +7,13 @@ export class Tetromino {
     undefined,
     [
       `....
-     TTT.
-     .T..
-     ....`,
+       TTT.
+       .T..
+       ....`,
       `.T..
-     TT..
-     .T..
-     ....`,
+       TT..
+       .T..
+       ....`,
       `....
      .T..
      TTT.
