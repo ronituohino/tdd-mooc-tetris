@@ -76,14 +76,6 @@ export class RotatingShape {
       }
       return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates, newState);
     }
-
-    let str = "";
-    for (let x = this.width - 1; x >= 0; x--) {
-      for (let y = 0; y < this.height; y++) {
-        str += this.characters[y * this.width + x];
-      }
-    }
-    return new RotatingShape(str, this.width, this.height);
   }
 
   toString() {
