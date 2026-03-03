@@ -51,11 +51,32 @@ describe("Rotating 3x3 shape", () => {
 
 describe("Rotating 5x5 shape", () => {
   let shape = RotatingShape.fromString(
-    `ABCDE
-     FGHIJ
-     KLMNO
-     PQRST
-     UVWXY`
+    "",
+    "arika",
+    undefined,
+    [
+      `ABCDE
+       FGHIJ
+       KLMNO
+       PQRST
+       UVWXY`,
+      `UPKFA
+       VQLGB
+       WRMHC
+       XSNID
+       YTOJE`,
+      `YXWVU
+       TSRQP
+       ONMLK
+       JIHGF
+       EDCBA`,
+      `EJOTY
+       DINSX
+       CHMRW
+       BGLQV
+       AFKPU`,
+    ],
+    0
   );
 
   test("initial orientation", () => {
