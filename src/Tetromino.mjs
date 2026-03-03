@@ -4,7 +4,6 @@ export class Tetromino {
   static T_SHAPE = RotatingShape.fromString(
     "",
     "arika",
-    undefined,
     [
       `....
        TTT.
@@ -28,7 +27,6 @@ export class Tetromino {
   static I_SHAPE = RotatingShape.fromString(
     "",
     "arika",
-    undefined,
     [
       `....
        IIII
@@ -52,7 +50,6 @@ export class Tetromino {
   static O_SHAPE = RotatingShape.fromString(
     "",
     "arika",
-    undefined,
     [
       `....
        .OO.

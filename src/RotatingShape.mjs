@@ -16,7 +16,7 @@ export class RotatingShape {
     return [charArr.join(""), charArr[0].length, charArr.length];
   }
 
-  static fromString(str, rotationConstraint, rotationOtherState, arikaStates, initialArikaState) {
+  static fromString(str, rotationConstraint, arikaStates, initialArikaState) {
     if (typeof str !== "string") {
       return undefined;
     }

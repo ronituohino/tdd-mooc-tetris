@@ -6,7 +6,6 @@ describe("Rotating 3x3 shape", () => {
   let shape = RotatingShape.fromString(
     "",
     "arika",
-    undefined,
     [
       `ABC
        DEF
@@ -53,7 +52,6 @@ describe("Rotating 5x5 shape", () => {
   let shape = RotatingShape.fromString(
     "",
     "arika",
-    undefined,
     [
       `ABCDE
        FGHIJ
