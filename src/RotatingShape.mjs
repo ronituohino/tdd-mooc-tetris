@@ -20,7 +20,7 @@ export class RotatingShape {
     if (typeof str !== "string") {
       return undefined;
     }
-    if (rotationConstraint === "arika") {
+    
       const cleanedStates = [];
       let width = 0;
       let height = 0;
@@ -31,7 +31,6 @@ export class RotatingShape {
         height = cleaned[2];
       }
       return new RotatingShape(width, height, cleanedStates, initialArikaState);
-    }
   }
 
   rotateRight() {
