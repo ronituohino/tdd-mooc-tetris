@@ -16,7 +16,7 @@ export class RotatingShape {
     return [charArr.join(""), charArr[0].length, charArr.length];
   }
 
-  static fromString(str, rotationConstraint, arikaStates, initialArikaState) {
+  static fromString(rotationConstraint, arikaStates, initialArikaState) {
     const cleanedStates = [];
     let width = 0;
     let height = 0;

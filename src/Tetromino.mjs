@@ -2,7 +2,6 @@ import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
   static T_SHAPE = RotatingShape.fromString(
-    "",
     "arika",
     [
       `....
@@ -25,7 +24,6 @@ export class Tetromino {
     0
   );
   static I_SHAPE = RotatingShape.fromString(
-    "",
     "arika",
     [
       `....
@@ -48,7 +46,6 @@ export class Tetromino {
     0
   );
   static O_SHAPE = RotatingShape.fromString(
-    "",
     "arika",
     [
       `....

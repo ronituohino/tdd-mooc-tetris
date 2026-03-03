@@ -4,7 +4,6 @@ import { RotatingShape } from "../src/RotatingShape.mjs";
 
 describe("Rotating 3x3 shape", () => {
   let shape = RotatingShape.fromString(
-    "",
     "arika",
     [
       `ABC
@@ -50,7 +49,6 @@ describe("Rotating 3x3 shape", () => {
 
 describe("Rotating 5x5 shape", () => {
   let shape = RotatingShape.fromString(
-    "",
     "arika",
     [
       `ABCDE

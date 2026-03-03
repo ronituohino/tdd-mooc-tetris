@@ -41,7 +41,6 @@ export class Board {
     }
 
     this.fallingShape = RotatingShape.fromString(
-      "",
       "arika",
       fallingShapeStates,
       initialFallingShapeState ? initialFallingShapeState : 0
@@ -83,7 +82,7 @@ export class Board {
 
     let tetromino;
     if (typeof shape === "string") {
-      tetromino = RotatingShape.fromString("", "arika", shape.repeat(4).split(""), 0);
+      tetromino = RotatingShape.fromString("arika", shape.repeat(4).split(""), 0);
     } else {
       tetromino = shape;
     }
