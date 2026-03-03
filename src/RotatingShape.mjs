@@ -17,10 +17,6 @@ export class RotatingShape {
   }
 
   static fromString(str, rotationConstraint, arikaStates, initialArikaState) {
-    if (typeof str !== "string") {
-      return undefined;
-    }
-
     const cleanedStates = [];
     let width = 0;
     let height = 0;
