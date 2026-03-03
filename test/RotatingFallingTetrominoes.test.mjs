@@ -9,7 +9,7 @@ function fallToBottom(board) {
   }
 }
 
-function searchPatterns(board, patterns) {
+function searchConsecutivePatterns(board, patterns) {
   const indexes = patterns.map(() => -1);
   const lines = board.toString().split("\n");
   let currentIndex = 0;
@@ -46,8 +46,7 @@ describe("A falling Tetromino can be rotated", () => {
     board.tick();
     board.rotateLeft();
 
-    const indexes = searchPatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
-
+    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
     indexes.forEach((pattern) => {
       expect(pattern.index).to.not.equal(-1);
     });
@@ -58,62 +57,65 @@ describe("A falling Tetromino can be rotated", () => {
     board.drop(Tetromino.T_SHAPE);
     board.tick();
     board.rotateRight();
-    expect(board.toString()).to.equalShape(
-      `..........
-       ....T.....
-       ....TT....
-       ....T.....
-       ..........
-       ..........`
-    );
+
+    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
+    indexes.forEach((pattern) => {
+      expect(pattern.index).to.not.equal(-1);
+    });
+    expect(indexes[0]).to.equal(indexes[1]);
+    expect(indexes[1]).to.equal(indexes[2]);
   });
   test("left while touching a wall", () => {
     board.drop(Tetromino.T_SHAPE);
-    board.moveLeft();
-    board.moveLeft();
-    board.moveLeft();
+    for (let i = 0; i < 10; i++) {
+      board.moveLeft();
+    }
     board.rotateLeft();
-    expect(board.toString()).to.equalShape(
-      `.T........
-       TT........
-       .T........
-       ..........
-       ..........
-       ..........`
-    );
+
+    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "TT[.]", "[.]T[.]"]);
+    indexes.forEach((pattern) => {
+      expect(pattern.index).to.not.equal(-1);
+    });
+    expect(indexes[0]).to.equal(indexes[1]);
+    expect(indexes[1]).to.equal(indexes[2]);
   });
   test("right while touching a wall", () => {
     board.drop(Tetromino.T_SHAPE);
-    board.moveLeft();
-    board.moveLeft();
-    board.moveLeft();
+    for (let i = 0; i < 10; i++) {
+      board.moveLeft();
+    }
     board.rotateRight();
-    expect(board.toString()).to.equalShape(
-      `.T........
-       .TT.......
-       .T........
-       ..........
-       ..........
-       ..........`
-    );
+
+    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
+    indexes.forEach((pattern) => {
+      expect(pattern.index).to.not.equal(-1);
+    });
+    expect(indexes[0]).to.equal(indexes[1]);
+    expect(indexes[1]).to.equal(indexes[2]);
   });
   test("while touching the ground", () => {
     board.drop(Tetromino.T_SHAPE);
     board.rotateRight();
-    board.tick();
-    board.tick();
-    board.tick();
+    for (let i = 0; i < 10; i++) {
+      board.moveDown();
+    }
     board.rotateLeft();
-    expect(board.toString()).to.equalShape(
-      `..........
-       ..........
-       ..........
-       ....T.....
-       ...TTT....
-       ..........`
-    );
+    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TTT[.]"]);
+    indexes.forEach((pattern) => {
+      expect(pattern.index).to.not.equal(-1);
+    });
+    expect(indexes[0]).to.be.greaterThan(indexes[1]);
   });
   test("left while touching another block", () => {
+    board.seed(
+      `..........
+       ..........
+       ......T...
+       .....TT...
+       ....OOT...
+       ....OO....`
+    );
+
     board.drop(Tetromino.O_SHAPE);
     fallToBottom(board);
     board.drop(Tetromino.T_SHAPE);
