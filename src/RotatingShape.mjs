@@ -84,15 +84,6 @@ export class RotatingShape {
       }
       return new RotatingShape("", this.width, this.height, "arika", undefined, this.arikaStates, newState);
     }
-    if (this.rotationConstraint === "2-state") {
-      return new RotatingShape(
-        this.rotationOtherState,
-        this.width,
-        this.height,
-        this.rotationConstraint,
-        this.characters
-      );
-    }
 
     let str = "";
     for (let x = this.width - 1; x >= 0; x--) {
