@@ -73,11 +73,20 @@ describe("A falling tetromino cannot be moved beyond", () => {
   });
 });
 
-function fallToBottom(board) {
-  for (let i = 0; i < 10; i++) {
-    board.tick();
-  }
-}
+const CUSTOM_O_SHAPE = [
+  `...
+   .OO
+   .OO`,
+  `...
+   .OO
+   .OO`,
+  `...
+   .OO
+   .OO`,
+  `...
+   .OO
+   .OO`,
+];
 
 describe("A falling tetromino cannot be moved through", () => {
   let board;
@@ -86,22 +95,18 @@ describe("A falling tetromino cannot be moved through", () => {
   });
 
   test("other blocks on the left", () => {
-    board.drop(Tetromino.O_SHAPE);
-    fallToBottom(board);
-    board.drop(Tetromino.O_SHAPE);
-    board.moveRight();
-    board.moveRight();
-    board.tick();
-    board.tick();
-    board.tick();
-    expect(board.toString()).to.equalShape(
+    board.seed(
       `..........
        ..........
        ..........
-       ......OO..
-       ....OOOO..
-       ....OO....`
+       ..........
+       ....OO....
+       ....OO....`,
+      CUSTOM_O_SHAPE,
+      5,
+      2
     );
+
     board.moveLeft();
     expect(board.toString()).to.equalShape(
       `..........
@@ -113,22 +118,18 @@ describe("A falling tetromino cannot be moved through", () => {
     );
   });
   test("other blocks on the right", () => {
-    board.drop(Tetromino.O_SHAPE);
-    fallToBottom(board);
-    board.drop(Tetromino.O_SHAPE);
-    board.moveLeft();
-    board.moveLeft();
-    board.tick();
-    board.tick();
-    board.tick();
-    expect(board.toString()).to.equalShape(
+    board.seed(
       `..........
        ..........
        ..........
-       ..OO......
-       ..OOOO....
-       ....OO....`
+       ..........
+       ....OO....
+       ....OO....`,
+      CUSTOM_O_SHAPE,
+      1,
+      2
     );
+
     board.moveRight();
     expect(board.toString()).to.equalShape(
       `..........
@@ -140,20 +141,18 @@ describe("A falling tetromino cannot be moved through", () => {
     );
   });
   test("other blocks below (will stop falling)", () => {
-    board.drop(Tetromino.O_SHAPE);
-    fallToBottom(board);
-    board.drop(Tetromino.O_SHAPE);
-    board.moveLeft();
-    board.tick();
-    board.tick();
-    expect(board.toString()).to.equalShape(
+    board.seed(
       `..........
        ..........
-       ...OO.....
-       ...OO.....
+       ..........
+       ..........
        ....OO....
-       ....OO....`
+       ....OO....`,
+      CUSTOM_O_SHAPE,
+      2,
+      1
     );
+
     board.moveDown();
     expect(board.toString()).to.equalShape(
       `..........
