@@ -21,16 +21,16 @@ export class RotatingShape {
       return undefined;
     }
     
-      const cleanedStates = [];
-      let width = 0;
-      let height = 0;
+    const cleanedStates = [];
+    let width = 0;
+    let height = 0;
       for (let i = 0; i < arikaStates.length; i++) {
         const cleaned = RotatingShape.parseText(arikaStates[i]);
         cleanedStates.push(cleaned[0]);
         width = cleaned[1];
         height = cleaned[2];
       }
-      return new RotatingShape(width, height, cleanedStates, initialArikaState);
+    return new RotatingShape(width, height, cleanedStates, initialArikaState);
   }
 
   rotateRight() {
