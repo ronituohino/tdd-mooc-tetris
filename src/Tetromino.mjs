@@ -32,12 +32,6 @@ export class Tetromino {
      IIII.
      .....
      .....`,
-    "2-state",
-    `..I..
-     ..I..
-     ..I..
-     ..I..
-     .....`
   );
   */
   static I_SHAPE = RotatingShape.fromString(
