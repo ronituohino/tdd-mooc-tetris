@@ -56,4 +56,14 @@ export class Tetromino {
      ...`,
     "no-rotate"
   );
+  /*
+      `....
+       .OO.
+       .OO.
+       ....`,
+      `....
+       .OO.
+       .OO.
+       ....`,
+   */
 }
