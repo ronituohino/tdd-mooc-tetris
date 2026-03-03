@@ -36,14 +36,7 @@ export class RotatingShape {
         width = cleaned[1];
         height = cleaned[2];
       }
-      return new RotatingShape(
-        width,
-        height,
-        rotationConstraint,
-        undefined,
-        cleanedStates,
-        initialArikaState
-      );
+      return new RotatingShape(width, height, rotationConstraint, undefined, cleanedStates, initialArikaState);
     }
   }
 
