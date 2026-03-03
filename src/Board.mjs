@@ -25,11 +25,11 @@ export class Board {
 
   seed(initalBoardState, fallingShapeStates, fallingShapePosX, fallingShapePosY) {
     if(initalBoardState !== undefined) {
-    const charArr = initalBoardState.split("\n").map((lines) => lines.trim());
-    const boardStr = charArr.join("");
-    if (charArr[0].length != this.width || charArr.length != this.height) {
-      throw new Error(`Seed function board dimensions do not match ${this.width} x ${this.height}`);
-    }
+      const charArr = initalBoardState.split("\n").map((lines) => lines.trim());
+      const boardStr = charArr.join("");
+      if (charArr[0].length != this.width || charArr.length != this.height) {
+        throw new Error(`Seed function board dimensions do not match ${this.width} x ${this.height}`);
+      }
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         const char = boardStr[y * this.width + x];
