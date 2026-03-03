@@ -40,6 +40,7 @@ export class Board {
     }
 
     this.fallingShape = RotatingShape.fromString("", "arika", undefined, fallingShapeStates);
+    console.log(this.fallingShape);
     this.shapePosX = fallingShapePosX;
     this.shapePosY = fallingShapePosY;
   }

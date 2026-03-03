@@ -28,7 +28,12 @@ export class RotatingShape {
       return undefined;
     }
     if (rotationConstraint === "arika") {
-      return new RotatingShape(undefined, undefined, undefined, rotationConstraint, undefined, arikaStates);
+      const cleanedStates = [];
+      for (let i = 0; i < arikaStates.length; i++) {
+        const cleaned = RotatingShape.parseText(arikaStates[i]);
+        cleanedStates.push(cleaned[0]);
+      }
+      return new RotatingShape(undefined, undefined, undefined, rotationConstraint, undefined, cleanedStates);
     }
 
     const [characters, widht, height] = RotatingShape.parseText(str);

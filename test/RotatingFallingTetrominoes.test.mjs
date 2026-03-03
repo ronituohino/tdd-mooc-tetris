@@ -117,16 +117,20 @@ describe("A falling Tetromino can be rotated", () => {
       [
         `.T.
          TTT
-         ...`,
+         ...
+         `,
         `.T.
          .TT
-         .T.`,
+         .T.
+         `,
         `...
          TTT
-         .T.`,
+         .T.
+         `,
         `.T.
          TT.
-         .T.`,
+         .T.
+         `,
       ],
       4,
       2
