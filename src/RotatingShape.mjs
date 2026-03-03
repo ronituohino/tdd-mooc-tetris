@@ -123,6 +123,10 @@ export class RotatingShape {
    */
   extractCoordinatesAndCharacters() {
     let coordsAndChars = [];
+    if (this.rotationConstraint === "arika") {
+      const [rawChars, width, height] = this.parseText(this.arikaStates[this.arikaCurrentState]);
+    }
+
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         const char = this.characters[y * this.width + x];
