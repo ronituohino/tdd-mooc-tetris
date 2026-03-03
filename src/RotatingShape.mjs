@@ -4,11 +4,11 @@ export class RotatingShape {
   states;
   currentState;
 
-  constructor(width, height, arikaStates, currentArikaState) {
+  constructor(width, height, states, currentState) {
     this.width = width;
     this.height = height;
-    this.states = arikaStates;
-    this.currentState = currentArikaState;
+    this.states = states;
+    this.currentState = currentState;
   }
 
   static parseText(str) {
