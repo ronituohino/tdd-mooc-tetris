@@ -16,17 +16,17 @@ export class RotatingShape {
     return [charArr.join(""), charArr[0].length, charArr.length];
   }
 
-  static fromString(arikaStates, initialArikaState) {
+  static fromString(states, initialState) {
     const cleanedStates = [];
     let width = 0;
     let height = 0;
-    for (let i = 0; i < arikaStates.length; i++) {
-      const cleaned = RotatingShape.parseText(arikaStates[i]);
+    for (let i = 0; i < states.length; i++) {
+      const cleaned = RotatingShape.parseText(states[i]);
       cleanedStates.push(cleaned[0]);
       width = cleaned[1];
       height = cleaned[2];
     }
-    return new RotatingShape(width, height, cleanedStates, initialArikaState);
+    return new RotatingShape(width, height, cleanedStates, initialState);
   }
 
   rotateRight() {
