@@ -24,32 +24,6 @@ const CUSTOM_T_BLOCK = [
    .T.`,
 ];
 
-function searchConsecutivePatterns(board, patterns) {
-  const indexes = patterns.map(() => -1);
-  const lines = board.toString().split("\n");
-  let currentIndex = 0;
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const resultIndex = line.search(patterns[currentIndex]);
-    if (resultIndex === -1) {
-      if (currentIndex !== 0) {
-        break;
-      }
-      continue;
-    } else {
-      indexes[currentIndex] = resultIndex;
-      currentIndex += 1;
-
-      if (currentIndex >= indexes.length) {
-        break;
-      } else {
-        continue;
-      }
-    }
-  }
-  return indexes;
-}
-
 describe("A falling Tetromino can be rotated", () => {
   let board;
   beforeEach(() => {
@@ -57,26 +31,7 @@ describe("A falling Tetromino can be rotated", () => {
   });
 
   test("left in the air", () => {
-    board.seed(
-      `..........
-       ..........
-       ..........
-       ..........
-       ..........
-       ..........`,
-      CUSTOM_T_BLOCK,
-      1,
-      1
-    );
-    expect(board.toString()).to.equalShape(
-      `..........
-       ..T.......
-       .TTT......
-       ..........
-       ..........
-       ..........`
-    );
-
+    board.seed(undefined, CUSTOM_T_BLOCK, 1, 1);
     board.rotateLeft();
     expect(board.toString()).to.equalShape(
       `..........
@@ -88,57 +43,52 @@ describe("A falling Tetromino can be rotated", () => {
     );
   });
   test("right in the air", () => {
-    board.drop(Tetromino.T_SHAPE);
-    board.tick();
+    board.seed(undefined, CUSTOM_T_BLOCK, 1, 1);
     board.rotateRight();
-
-    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
-    indexes.forEach((pattern) => {
-      expect(pattern.index).to.not.equal(-1);
-    });
-    expect(indexes[0]).to.equal(indexes[1]);
-    expect(indexes[1]).to.equal(indexes[2]);
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..T.......
+       ..TT......
+       ..T.......
+       ..........
+       ..........`
+    );
   });
   test("left while touching a wall", () => {
-    board.drop(Tetromino.T_SHAPE);
-    for (let i = 0; i < 10; i++) {
-      board.moveLeft();
-    }
+    board.seed(undefined, CUSTOM_T_BLOCK, 0, 1);
     board.rotateLeft();
-
-    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "TT[.]", "[.]T[.]"]);
-    indexes.forEach((pattern) => {
-      expect(pattern.index).to.not.equal(-1);
-    });
-    expect(indexes[0]).to.equal(indexes[1]);
-    expect(indexes[1]).to.equal(indexes[2]);
+    expect(board.toString()).to.equalShape(
+      `..........
+       .T........
+       TT........
+       .T........
+       ..........
+       ..........`
+    );
   });
   test("right while touching a wall", () => {
-    board.drop(Tetromino.T_SHAPE);
-    for (let i = 0; i < 10; i++) {
-      board.moveLeft();
-    }
+    board.seed(undefined, CUSTOM_T_BLOCK, 0, 1);
     board.rotateRight();
-
-    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TT[.]", "[.]T[.]"]);
-    indexes.forEach((pattern) => {
-      expect(pattern.index).to.not.equal(-1);
-    });
-    expect(indexes[0]).to.equal(indexes[1]);
-    expect(indexes[1]).to.equal(indexes[2]);
+    expect(board.toString()).to.equalShape(
+      `..........
+       .T........
+       .TT.......
+       .T........
+       ..........
+       ..........`
+    );
   });
   test("while touching the ground", () => {
-    board.drop(Tetromino.T_SHAPE);
-    board.rotateRight();
-    for (let i = 0; i < 10; i++) {
-      board.moveDown();
-    }
+    board.seed(undefined, CUSTOM_T_BLOCK, 1, 3, 1);
     board.rotateLeft();
-    const indexes = searchConsecutivePatterns(board, ["[.]T[.]", "[.]TTT[.]"]);
-    indexes.forEach((pattern) => {
-      expect(pattern.index).to.not.equal(-1);
-    });
-    expect(indexes[0]).to.be.greaterThan(indexes[1]);
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..T.......
+       .TTT......
+       ..........`
+    );
   });
   test("left while touching another block", () => {
     board.seed(

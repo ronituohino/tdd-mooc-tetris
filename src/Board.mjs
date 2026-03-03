@@ -23,7 +23,7 @@ export class Board {
     this.occupiedSpots = [];
   }
 
-  seed(initalBoardState, fallingShapeStates, fallingShapePosX, fallingShapePosY) {
+  seed(initalBoardState, fallingShapeStates, fallingShapePosX, fallingShapePosY, initialFallingShapeState) {
     if (initalBoardState !== undefined) {
       const charArr = initalBoardState.split("\n").map((lines) => lines.trim());
       const boardStr = charArr.join("");
@@ -40,7 +40,13 @@ export class Board {
       }
     }
 
-    this.fallingShape = RotatingShape.fromString("", "arika", undefined, fallingShapeStates);
+    this.fallingShape = RotatingShape.fromString(
+      "",
+      "arika",
+      undefined,
+      fallingShapeStates,
+      initialFallingShapeState ? initialFallingShapeState : 0
+    );
     this.shapePosX = fallingShapePosX;
     this.shapePosY = fallingShapePosY;
   }

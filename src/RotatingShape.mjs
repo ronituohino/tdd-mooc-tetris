@@ -23,7 +23,7 @@ export class RotatingShape {
     return [charArr.join(""), charArr[0].length, charArr.length];
   }
 
-  static fromString(str, rotationConstraint, rotationOtherState, arikaStates) {
+  static fromString(str, rotationConstraint, rotationOtherState, arikaStates, initialArikaState) {
     if (typeof str !== "string") {
       return undefined;
     }
@@ -37,7 +37,7 @@ export class RotatingShape {
         width = cleaned[1];
         height = cleaned[2];
       }
-      return new RotatingShape(undefined, width, height, rotationConstraint, undefined, cleanedStates, 0);
+      return new RotatingShape(undefined, width, height, rotationConstraint, undefined, cleanedStates, initialArikaState);
     }
 
     const [characters, widht, height] = RotatingShape.parseText(str);
