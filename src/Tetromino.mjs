@@ -65,5 +65,13 @@ export class Tetromino {
        .OO.
        .OO.
        ....`,
+      `....
+       .OO.
+       .OO.
+       ....`,
+      `....
+       .OO.
+       .OO.
+       ....`,
    */
 }
