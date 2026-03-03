@@ -14,6 +14,12 @@ describe("Rotating 3x3 shape", () => {
       `GDA
        HEB
        IFC`,
+      `IHG
+       FED
+       CBA`,
+      `CFI
+       BEH
+       ADG`,
     ],
     0
   );
