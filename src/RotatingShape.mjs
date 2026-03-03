@@ -5,10 +5,9 @@ export class RotatingShape {
   arikaStates;
   arikaCurrentState;
 
-  constructor(width, height, rotationOtherState, arikaStates, currentArikaState) {
+  constructor(width, height, arikaStates, currentArikaState) {
     this.width = width;
     this.height = height;
-    this.rotationOtherState = rotationOtherState;
     this.arikaStates = arikaStates;
     this.arikaCurrentState = currentArikaState;
   }
@@ -32,7 +31,7 @@ export class RotatingShape {
         width = cleaned[1];
         height = cleaned[2];
       }
-      return new RotatingShape(width, height, undefined, cleanedStates, initialArikaState);
+      return new RotatingShape(width, height, cleanedStates, initialArikaState);
     }
   }
 
@@ -41,7 +40,7 @@ export class RotatingShape {
     if (newState >= this.arikaStates.length) {
       newState = 0;
     }
-    return new RotatingShape(this.width, this.height, undefined, this.arikaStates, newState);
+    return new RotatingShape(this.width, this.height, this.arikaStates, newState);
   }
 
   rotateLeft() {
@@ -49,7 +48,7 @@ export class RotatingShape {
     if (newState < 0) {
       newState = this.arikaStates.length - 1;
     }
-    return new RotatingShape(this.width, this.height, undefined, this.arikaStates, newState);
+    return new RotatingShape(this.width, this.height, this.arikaStates, newState);
   }
 
   toString() {
