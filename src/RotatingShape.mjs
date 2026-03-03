@@ -47,15 +47,6 @@ export class RotatingShape {
         initialArikaState
       );
     }
-
-    const [characters, widht, height] = RotatingShape.parseText(str);
-    return new RotatingShape(
-      characters,
-      widht,
-      height,
-      rotationConstraint,
-      rotationConstraint === "2-state" ? RotatingShape.parseText(rotationOtherState)[0] : undefined
-    );
   }
 
   rotateRight() {

@@ -84,7 +84,7 @@ export class Board {
 
     let tetromino;
     if (typeof shape === "string") {
-      tetromino = RotatingShape.fromString(shape);
+      tetromino = RotatingShape.fromString("", "arika", undefined, shape.repeat(4).split(""), 0);
     } else {
       tetromino = shape;
     }
