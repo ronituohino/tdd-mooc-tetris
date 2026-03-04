@@ -178,7 +178,12 @@ export class Board {
     }
   }
 
-  clearLines() {}
+  clearLines() {
+    let boardChecked = false;
+    while (!boardChecked) {
+      boardChecked = true;
+    }
+  }
 
   tick() {
     if (!this.fallingShape) {
