@@ -201,10 +201,14 @@ export class Board {
           rowsToRemoveYCoords.push(y);
         }
       }
+      rowsToRemoveYCoords.forEach((y) => {
+        for (let s = 0; s < this.occupiedSpots.length; s++) {
+          const os = this.occupiedSpots[s];
+          if (os.y < y) {
+          }
+        }
+      });
 
-      for (let s = 0; s < this.occupiedSpots.length; s++) {
-        const os = this.occupiedSpots[s];
-      }
       console.log(rowsToRemoveYCoords);
       boardChecked = true;
     }
