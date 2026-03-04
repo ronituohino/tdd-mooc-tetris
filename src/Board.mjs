@@ -181,12 +181,13 @@ export class Board {
   clearLines() {
     let boardChecked = false;
     while (!boardChecked) {
-      const arr = [];
+      const arr = ".".repeat(this.width * this.height).split("");
       for (let s = 0; s < this.occupiedSpots.length; s++) {
         const os = this.occupiedSpots[s];
         arr[os.y * this.width + os.x] = os.char;
       }
 
+      const rowsToRemoveYCoords = [];
       for (let y = 0; y < this.height; y++) {
         let fullLine = true;
         for (let x = 0; x < this.width; x++) {
@@ -196,7 +197,15 @@ export class Board {
             break;
           }
         }
+        if (fullLine) {
+          rowsToRemoveYCoords.push(y);
+        }
       }
+
+      for (let s = 0; s < this.occupiedSpots.length; s++) {
+        const os = this.occupiedSpots[s];
+      }
+      console.log(rowsToRemoveYCoords);
       boardChecked = true;
     }
   }
