@@ -178,6 +178,8 @@ export class Board {
     }
   }
 
+  clearLines() {}
+
   tick() {
     if (!this.fallingShape) {
       return;
@@ -193,6 +195,7 @@ export class Board {
         })
       );
       this.fallingShape = undefined;
+      this.clearLines();
     } else {
       this.shapePosY += 1;
     }
