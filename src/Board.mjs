@@ -181,6 +181,15 @@ export class Board {
   clearLines() {
     let boardChecked = false;
     while (!boardChecked) {
+      const arr = [];
+      for (let s = 0; s < this.occupiedSpots.length; s++) {
+        const os = this.occupiedSpots[s];
+        arr[os.y * this.width + os.x] = os.char;
+      }
+
+      for (let y = 0; y < this.height; y++) {
+        for (let x = 0; x < this.width; x++) {}
+      }
       boardChecked = true;
     }
   }
