@@ -188,7 +188,14 @@ export class Board {
       }
 
       for (let y = 0; y < this.height; y++) {
-        for (let x = 0; x < this.width; x++) {}
+        let fullLine = true;
+        for (let x = 0; x < this.width; x++) {
+          const char = arr[y * this.width + x];
+          if (char === ".") {
+            fullLine = false;
+            break;
+          }
+        }
       }
       boardChecked = true;
     }
