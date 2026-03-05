@@ -185,16 +185,16 @@ export class Board {
       arr[os.y * this.width + os.x] = os.char;
     }
 
-      const rowsToRemoveYCoords = [];
-      for (let y = 0; y < this.height; y++) {
-        let fullLine = true;
-        for (let x = 0; x < this.width; x++) {
-          const char = arr[y * this.width + x];
-          if (char === ".") {
-            fullLine = false;
-            break;
-          }
+    const rowsToRemoveYCoords = [];
+    for (let y = 0; y < this.height; y++) {
+      let fullLine = true;
+      for (let x = 0; x < this.width; x++) {
+        const char = arr[y * this.width + x];
+        if (char === ".") {
+          fullLine = false;
+          break;
         }
+      }
         if (fullLine) {
           rowsToRemoveYCoords.push(y);
         }
