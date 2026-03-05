@@ -202,14 +202,21 @@ export class Board {
         }
       }
       rowsToRemoveYCoords.forEach((y) => {
+        const newSpots = [];
         for (let s = 0; s < this.occupiedSpots.length; s++) {
           const os = this.occupiedSpots[s];
-          if (os.y < y) {
+          if (os.y === y) {
+            continue;
           }
+
+          if (os.y < y) {
+            os.y += 1;
+          }
+          newSpots.push(os);
         }
+        this.occupiedSpots = newSpots;
       });
 
-      console.log(rowsToRemoveYCoords);
       boardChecked = true;
     }
   }
