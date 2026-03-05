@@ -195,17 +195,17 @@ export class Board {
           break;
         }
       }
-        if (fullLine) {
-          rowsToRemoveYCoords.push(y);
-        }
+      if (fullLine) {
+        rowsToRemoveYCoords.push(y);
       }
-      rowsToRemoveYCoords.forEach((y) => {
-        const newSpots = [];
-        for (let s = 0; s < this.occupiedSpots.length; s++) {
-          const os = this.occupiedSpots[s];
-          if (os.y === y) {
-            continue;
-          }
+    }
+    rowsToRemoveYCoords.forEach((y) => {
+      const newSpots = [];
+      for (let s = 0; s < this.occupiedSpots.length; s++) {
+        const os = this.occupiedSpots[s];
+        if (os.y === y) {
+          continue;
+        }
 
           if (os.y < y) {
             os.y += 1;
