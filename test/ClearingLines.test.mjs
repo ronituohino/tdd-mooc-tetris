@@ -96,7 +96,6 @@ describe("On the board, when line(s) become full", () => {
     );
 
     for (let i = 0; i < 10; i++) {
-      console.log(board.toString());
       board.tick();
     }
 
@@ -109,9 +108,36 @@ describe("On the board, when line(s) become full", () => {
        .OTTI.`
     );
   });
-  test("four lines are cleared and blocks move down", () => {});
+  test("four lines are cleared and blocks move down", () => {
+    board.seed(
+      `..T...
+       O.TT..
+       TOTT.I
+       TOOT.T
+       IIII.O
+       TTTT.I`,
+      CUSTOM_I_BLOCK,
+      3,
+      0,
+      1
+    );
+
+    for (let i = 0; i < 10; i++) {
+      console.log(board.toString());
+      board.tick();
+    }
+
+    expect(board.toString()).to.equalShape(
+      `......
+       ......
+       ......
+       ......
+       ..T...
+       O.TT..`
+    );
+  });
 });
 
 describe("When a line doesn't become full", () => {
-  test.skip("do not remove any lines or move blocks", () => {});
+  test.skip("lines are not removed and blocks do not move", () => {});
 });
