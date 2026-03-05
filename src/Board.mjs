@@ -207,15 +207,13 @@ export class Board {
           continue;
         }
 
-          if (os.y < y) {
-            os.y += 1;
-          }
-          newSpots.push(os);
+        if (os.y < y) {
+          os.y += 1;
         }
-        this.occupiedSpots = newSpots;
-      });
-
-    
+        newSpots.push(os);
+      }
+      this.occupiedSpots = newSpots;
+    });
   }
 
   tick() {
