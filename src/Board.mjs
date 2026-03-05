@@ -179,13 +179,11 @@ export class Board {
   }
 
   clearLines() {
-    let boardChecked = false;
-    while (!boardChecked) {
-      const arr = ".".repeat(this.width * this.height).split("");
-      for (let s = 0; s < this.occupiedSpots.length; s++) {
-        const os = this.occupiedSpots[s];
-        arr[os.y * this.width + os.x] = os.char;
-      }
+    const arr = ".".repeat(this.width * this.height).split("");
+    for (let s = 0; s < this.occupiedSpots.length; s++) {
+      const os = this.occupiedSpots[s];
+      arr[os.y * this.width + os.x] = os.char;
+    }
 
       const rowsToRemoveYCoords = [];
       for (let y = 0; y < this.height; y++) {
@@ -217,8 +215,7 @@ export class Board {
         this.occupiedSpots = newSpots;
       });
 
-      boardChecked = true;
-    }
+    
   }
 
   tick() {
