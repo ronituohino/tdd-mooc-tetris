@@ -199,6 +199,7 @@ export class Board {
         rowsToRemoveYCoords.push(y);
       }
     }
+
     rowsToRemoveYCoords.forEach((y) => {
       const newSpots = [];
       for (let s = 0; s < this.occupiedSpots.length; s++) {
