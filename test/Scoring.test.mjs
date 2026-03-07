@@ -135,5 +135,31 @@ describe("When lines are cleared on the board", () => {
 });
 
 describe("When lines are not cleared on the board", () => {
-  test.skip("the scorer will not receive signals", () => {});
+  let board;
+  let score;
+  beforeEach(() => {
+    score = new Score();
+    board = new Board(6, 6, score);
+  });
+
+  test("the scorer will not receive signals", () => {
+    board.seed(
+      `......
+       ......
+       ......
+       T....I
+       TTT..I
+       TTT..I`,
+      CUSTOM_I_BLOCK,
+      3,
+      0,
+      1
+    );
+
+    for (let i = 0; i < 10; i++) {
+      board.tick();
+    }
+
+    expect(score.totalLinesCleared()).to.equal(0);
+  });
 });
