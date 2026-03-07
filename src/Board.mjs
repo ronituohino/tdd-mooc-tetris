@@ -12,9 +12,12 @@ export class Board {
   // static shapes
   occupiedSpots;
 
-  constructor(width, height) {
+  score;
+
+  constructor(width, height, score) {
     this.width = width;
     this.height = height;
+    this.score = score;
 
     this.shapePosX = -1;
     this.shapePosY = -1;
@@ -215,6 +218,10 @@ export class Board {
       }
       this.occupiedSpots = newSpots;
     });
+
+    if (this.score) {
+      this.score.clear(rowsToRemoveYCoords.length);
+    }
   }
 
   tick() {
