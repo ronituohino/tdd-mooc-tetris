@@ -26,6 +26,7 @@ describe("On the board, when line(s) become full", () => {
   beforeEach(() => {
     board = new Board(6, 6);
   });
+
   test("a single line is removed and blocks move down", () => {
     board.seed(
       `......
@@ -123,7 +124,6 @@ describe("On the board, when line(s) become full", () => {
     );
 
     for (let i = 0; i < 10; i++) {
-      console.log(board.toString());
       board.tick();
     }
 
@@ -136,8 +136,66 @@ describe("On the board, when line(s) become full", () => {
        O.TT..`
     );
   });
+  test("a single is removed that is not at the bottom and blocks move down", () => {
+    board.seed(
+      `......
+       ......
+       ......
+       T....I
+       TTTT.T
+       OOO..I`,
+      CUSTOM_I_BLOCK,
+      3,
+      0,
+      1
+    );
+
+    for (let i = 0; i < 10; i++) {
+      board.tick();
+    }
+
+    expect(board.toString()).to.equalShape(
+      `......
+       ......
+       ......
+       ....I.
+       T...II
+       OOO.II`
+    );
+  });
 });
 
 describe("When a line doesn't become full", () => {
-  test.skip("lines are not removed and blocks do not move", () => {});
+  let board;
+  beforeEach(() => {
+    board = new Board(6, 6);
+  });
+
+  test("lines are not removed and blocks do not move", () => {
+    board.seed(
+      `......
+       ......
+       ......
+       .....I
+       .TT..I
+       ..TT.I`,
+      CUSTOM_I_BLOCK,
+      -1,
+      0,
+      1
+    );
+
+    for (let i = 0; i < 10; i++) {
+      board.tick();
+    }
+
+    expect(board.toString()).to.equalShape(
+      `......
+       ......
+       I.....
+       I....I
+       ITT..I
+       I.TT.I`
+    );
+  });
 });
