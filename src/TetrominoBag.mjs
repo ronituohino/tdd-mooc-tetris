@@ -13,4 +13,10 @@ export class TetrominoBag {
     }
     this.length += tetrominos.length;
   }
+
+  get() {
+    const tetromino = this.tetrominos.pop();
+    this.length -= 1;
+    return tetromino;
+  }
 }
