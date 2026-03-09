@@ -5,10 +5,14 @@ import { TetrominoBag } from "../src/TetrominoBag.mjs";
 
 describe("A tetromino bag", () => {
   let bag;
-  beforeEach(() => {
+  const resetBag = () => {
     bag = new TetrominoBag();
     bag.add([Tetromino.I_SHAPE, Tetromino.I_SHAPE, Tetromino.T_SHAPE, Tetromino.T_SHAPE, Tetromino.O_SHAPE]);
+  };
+  beforeEach(() => {
+    resetBag();
   });
+
   test("can be initialized with n tetrominos", () => {
     expect(bag.length).to.equal(5);
   });

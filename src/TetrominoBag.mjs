@@ -19,4 +19,11 @@ export class TetrominoBag {
     this.length -= 1;
     return tetromino;
   }
+
+  shuffle() {
+    for (let i = this.tetrominos.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [this.tetrominos[i], this.tetrominos[randomIndex]] = [this.tetrominos[randomIndex], this.tetrominos[i]];
+    }
+  }
 }
