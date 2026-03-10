@@ -1,8 +1,10 @@
 export class Score {
   total;
   linesCleared;
+  level;
 
   constructor() {
+    this.level = 0;
     this.total = 0;
     this.linesCleared = 0;
   }

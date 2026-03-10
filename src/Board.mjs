@@ -77,6 +77,13 @@ export class Board {
     return arr.join("");
   }
 
+  cellAt(x, y) {
+    const chars = this.toString()
+      .split("\n")
+      .map((line) => line.trim());
+    return chars.join("")[y * this.width + x];
+  }
+
   drop(shape) {
     if (this.fallingShape !== undefined) {
       throw new Error("already falling");

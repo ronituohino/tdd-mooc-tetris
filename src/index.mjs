@@ -1,6 +1,6 @@
 import { Board } from "./Board.mjs";
 import { Score } from "./Score.mjs";
-import { ShuffleBag } from "./ShuffleBag.mjs";
+import { TetrominoBag } from "./TetrominoBag.mjs";
 import { Tetromino } from "./Tetromino.mjs";
 
 // TODO: change this code to match the API you have created, if you want to run the game for some manual testing
@@ -19,7 +19,8 @@ function initGame() {
   game.board.onClearLine = (lineCount) => {
     game.scoring.clear(lineCount);
   };
-  game.tetrominoes = new ShuffleBag([
+  game.tetrominoes = new TetrominoBag();
+  game.tetrominoes.add([
     Tetromino.I_SHAPE,
     Tetromino.T_SHAPE,
     Tetromino.L_SHAPE,
@@ -29,6 +30,7 @@ function initGame() {
     Tetromino.Z_SHAPE,
     Tetromino.O_SHAPE,
   ]);
+  game.tetrominoes.shuffle();
 
   document.addEventListener("keydown", (event) => {
     if (event.code === "Space") {
@@ -73,7 +75,7 @@ function progressTime(game, timestamp) {
 
 function tick(game) {
   if (!game.board.hasFalling()) {
-    game.board.drop(game.tetrominoes.next());
+    game.board.drop(game.tetrominoes.get());
   } else {
     game.board.tick();
   }
@@ -111,13 +113,13 @@ function renderGame(game, canvas, timestamp) {
   drawBackground(ctx, canvasWidth, canvasHeight);
   for (let row = 0; row < game.rows; row++) {
     for (let column = 0; column < game.columns; column++) {
-      const cell = game.board.cellAt(row, column);
+      const cell = game.board.cellAt(column, row);
       drawCell(ctx, { cell, row, column, cellWidth, cellHeight });
     }
   }
   drawScoring(ctx, {
     level: game.scoring.level,
-    score: game.scoring.score,
+    score: game.scoring.totalScore(),
     canvasWidth,
   });
 }
