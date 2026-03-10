@@ -88,7 +88,7 @@ export class Tetromino {
   static Z_SHAPE = RotatingShape.fromString(
     [
       `....
-       ZZ.
+       ZZ..
        .ZZ.
        ....`,
       `..Z.
@@ -102,6 +102,48 @@ export class Tetromino {
       `..Z.
        .ZZ.
        .Z..
+       ....`,
+    ],
+    0
+  );
+  static L_SHAPE = RotatingShape.fromString(
+    [
+      `....
+       LLL.
+       L...
+       ....`,
+      `LL..
+       .L..
+       .L..
+       ....`,
+      `....
+       ..L.
+       LLL.
+       ....`,
+      `.L..
+       .L..
+       .LL.
+       ....`,
+    ],
+    0
+  );
+  static S_SHAPE = RotatingShape.fromString(
+    [
+      `....
+       .SS.
+       SS..
+       ....`,
+      `S...
+       SS..
+       .S..
+       ....`,
+      `....
+       .SS.
+       SS..
+       ....`,
+      `S...
+       SS..
+       .S..
        ....`,
     ],
     0
