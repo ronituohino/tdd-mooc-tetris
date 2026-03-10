@@ -221,6 +221,8 @@ export class Board {
 
     if (this.score) {
       this.score.clear(rowsToRemoveYCoords.length);
+    } else if (this.onClearLine) {
+      this.onClearLine(rowsToRemoveYCoords.length);
     }
   }
 

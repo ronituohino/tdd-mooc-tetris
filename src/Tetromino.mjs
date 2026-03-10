@@ -64,4 +64,46 @@ export class Tetromino {
     ],
     0
   );
+  static J_SHAPE = RotatingShape.fromString(
+    [
+      `....
+       JJJ.
+       ..J.
+       ....`,
+      `.J..
+       .J..
+       JJ..
+       ....`,
+      `....
+       J...
+       JJJ.
+       ....`,
+      `.JJ.
+       .J..
+       .J..
+       ....`,
+    ],
+    0
+  );
+  static Z_SHAPE = RotatingShape.fromString(
+    [
+      `....
+       ZZ.
+       .ZZ.
+       ....`,
+      `..Z.
+       .ZZ.
+       .Z..
+       ....`,
+      `....
+       ZZ..
+       .ZZ.
+       ....`,
+      `..Z.
+       .ZZ.
+       .Z..
+       ....`,
+    ],
+    0
+  );
 }

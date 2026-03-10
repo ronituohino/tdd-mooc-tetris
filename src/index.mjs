@@ -1,5 +1,5 @@
 import { Board } from "./Board.mjs";
-import { ScoringSystem } from "./ScoringSystem.mjs";
+import { Score } from "./Score.mjs";
 import { ShuffleBag } from "./ShuffleBag.mjs";
 import { Tetromino } from "./Tetromino.mjs";
 
@@ -14,10 +14,10 @@ function initGame() {
     tickDuration: 1000,
     nextTick: 0,
   };
-  game.scoring = new ScoringSystem();
+  game.scoring = new Score();
   game.board = new Board(game.columns, game.rows);
   game.board.onClearLine = (lineCount) => {
-    game.scoring.linesCleared(lineCount);
+    game.scoring.clear(lineCount);
   };
   game.tetrominoes = new ShuffleBag([
     Tetromino.I_SHAPE,
