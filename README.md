@@ -56,3 +56,13 @@ Start a web UI for playing the game at http://127.0.0.1:8080
 Code reformat
 
     npm run format
+
+## Thoughts
+
+I overlooked a bunch of stuff during the implementation. Mainly for the shuffle bag :D
+
+It could have been made more general to accept all kinds of data, and not just Tetrominoes. I think the current implementation actually supports that, but the naming of things indicates that only Tetrominoes are supported. Also, I made a bit of an oopsie in the sense that the bag runs out of blocks haha.
+
+Furthermore, I didn't have a `cellAt` function in the Board implementation, which I had to add to make the UI work. On retrospect, this would have made other things easier to implement.
+
+Overall, a great exercise!
